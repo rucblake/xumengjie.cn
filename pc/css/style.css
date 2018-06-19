@@ -1,0 +1,36 @@
+.y-center {
+    text-align: center;
+}
+
+.y-red {
+    color:red;
+}
+
+.y-blank {
+    height: 200px;
+}
+
+.top-links {
+    height: 50px;
+    line-height: 50px;
+}
+
+.top-imgs {
+	height: 100%;
+	overflow: hidden;
+}
+
+.bottom {
+    font-size: 24px;
+    color: red;
+    margin: 20px 0;
+}
+
+.other-imgs {
+    height: 100%;
+    overflow: hidden;
+}
+
+.contact-info {
+    margin: 20px 0;
+}
