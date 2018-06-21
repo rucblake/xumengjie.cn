@@ -37,6 +37,7 @@ foreach($urls as $key => $value) {
     $data = json_decode($page_content);
     $num = explode("总参与人数", $data->data->content);
     $people = explode("人", $num[1]);
+    $result[$key]['id'] = $value;
     $result[$key]['name'] = $data->data->owner->nickname;
     $result[$key]['money'] = $data->data->fundingdto->saleamount;
     $result[$key]['people'] = $people[0];
@@ -94,6 +95,7 @@ foreach($urls as $key => $value) {
     <body>
         <div id="actual">
             <h3>6月21日12:00 Final Battle 数据实时更新表</h3>
+            <p>点击后援会名称可以跳转集资页面</p>
             <table class="actual-table">
                 <thead>
                     <tr>
@@ -107,7 +109,7 @@ foreach($urls as $key => $value) {
                 </thead>
                 <tbody class="actual-tbody">
                     <tr v-for="item in actual">
-                        <td class="name">{{ item.name }}</td>
+                        <td class="name"><a :href="'https://m.owhat.cn/shop/supportdetail.html?id='+ item.id" target="_blank">{{ item.name }}</a></td>
                         <td class="money">{{ item.money }}元</td>
                         <td class="people">{{ item.people }}人</td>
                         <td class="dealNum">{{ item.dealNum }}笔</td>
@@ -120,7 +122,7 @@ foreach($urls as $key => $value) {
         <div id="data-echarts"></div>
         <p>每10分钟抓取一次数据。点击图表可查看详情。使用PC看图效果更佳。</p>
         <p>微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | 彩虹糖一枚~</p>
-        <p><a href="https://xumengjie.cn" target="_blank">xumengjie.cn</a> | <a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 作图工具：<a href="http://echarts.baidu.com/" target="_blank">百度Echarts</a></p>
+        <p><a href="http://xumengjie.cn" target="_blank">xumengjie.cn</a> | <a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 作图工具：<a href="http://echarts.baidu.com/" target="_blank">百度Echarts</a></p>
     </body>
     <script src="http://test.eibook.com.cn:8088/rainbow/dep/echarts.min.js"></script>
     <script src="http://test.eibook.com.cn:8088/rainbow/dep/vue.js"></script>
