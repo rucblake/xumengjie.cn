@@ -1,24 +1,23 @@
 <?php
 $urls = array(
-    'fj' => "39925",
-    'ycy' => "39911",
-    'wxy' => "39909",
-    'xmj' => "39908",
-    'lry' => "39917",
-    'gyx' => "39865"
+    'mmq' => "40567",
+    'xmj' => "40572",
+    'cyh' => "40571",
+    'lzt' => "40575",
+    'gqz' => "40577",
+    'lry' => "40578"
 );
 
 $referurl = "https://www.owhat.cn/index.html";
 $result = array(
-    'fj' => array(),
-    'ycy' => array(),
-    'wxy' => array(),
+    'mmq' => array(),
     'xmj' => array(),
-    'lry' => array(),
-    'gyx' => array()
+    'cyh' => array(),
+    'lzt' => array(),
+    'gqz' => array(),
+    'lry' => array()
 );
 foreach($urls as $key => $value) {
-    echo "<tr>";
     $fields = "cmd_s=shop.goods&cmd_m=findgoodsbyid&v=4.4.5&client=%7B%22platform%22%3A%22pc%22%2C%22version%22%3A%224.4.5%22%2C%22deviceid%22%3A%22f4e85b09-8133-ee7b-114f-877d3ec05fb1%22%2C%22channel%22%3A%22owhat%22%7D&data=%7B%22goodsid%22%3A%22".$value."%22%7D";
     $ch = curl_init();
     curl_setopt_array($ch, array(
@@ -42,8 +41,13 @@ foreach($urls as $key => $value) {
     $result[$key]['money'] = $data->data->fundingdto->saleamount;
     $result[$key]['people'] = $people[0];
     $result[$key]['dealNum'] = $data->data->paystock;
-    $result[$key]['peopleAverage'] = round($data->data->fundingdto->saleamount/$people[0], 2);
-    $result[$key]['dealAverage'] = round($data->data->fundingdto->saleamount/$data->data->paystock, 2);
+    if ($people[0] > 0) {
+        $result[$key]['peopleAverage'] = round($data->data->fundingdto->saleamount/$people[0], 2);
+        $result[$key]['dealAverage'] = round($data->data->fundingdto->saleamount/$data->data->paystock, 2);
+    } else {
+        $result[$key]['peopleAverage'] = 0;
+        $result[$key]['dealAverage'] = 0;
+    }
     curl_close($ch);
 }
 ?>
@@ -114,6 +118,9 @@ foreach($urls as $key => $value) {
             </table>
         </div>
         <div id="data-echarts"></div>
+        <p>每10分钟抓取一次数据。点击图表可查看详情。使用PC看图效果更佳。</p>
+        <p>微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | 彩虹糖一枚~</p>
+        <p><a href="https://xumengjie.cn" target="_blank">xumengjie.cn</a> | <a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 作图工具：<a href="http://echarts.baidu.com/" target="_blank">百度Echarts</a></p>
     </body>
     <script src="http://test.eibook.com.cn:8088/rainbow/dep/echarts.min.js"></script>
     <script src="http://test.eibook.com.cn:8088/rainbow/dep/vue.js"></script>
@@ -123,114 +130,117 @@ foreach($urls as $key => $value) {
         var vmData = {
             mmq: {
                 name: '孟美岐',
-                data: [["12:00",116],["12:10",129],["12:20",135]]
+                data: [["2018-06-21 12:00","0"]]
             },
             xmj: {
                 name: '徐梦洁',
-                data: [["12:00",116],["12:10",129],["12:30",135]]
+                data: [["2018-06-21 12:00","0"]]
             },
             cyh: {
                 name: '陈意涵',
-                data: [["12:00",116],["12:10",129],["12:30",135]]
+                data: [["2018-06-21 12:00","0"]]
             },
             lzt: {
                 name: '李紫婷',
-                data: [["12:00",116],["12:10",129],["12:30",135]]
+                data: [["2018-06-21 12:00","0"]]
             },
             gqz: {
                 name: '高秋梓',
-                data: [["12:00",116],["12:10",129],["12:30",135]]
+                data: [["2018-06-21 12:00","0"]]
             },
             lry: {
                 name: '刘人语',
-                data: [["12:00",116],["12:10",129],["12:30",135]]
+                data: [["2018-06-21 12:00","0"]]
             }
         }
-        var myChart = echarts.init(document.getElementById('data-echarts'));
-        var option = {
-                title: {
-                    text: '集资金额趋势图'
-                },
-                tooltip: {
-                    trigger: 'axis'
-                },
-                xAxis: {
-                    data: vmData.xmj.data.map(function (item) {
-                        return item[0];
-                    })
-                },
-                yAxis: {
-                    splitLine: {
-                        show: false
-                    }
-                },
-                toolbox: {
-                    left: 'center',
-                    feature: {
-                        dataZoom: {
-                            yAxisIndex: 'none'
-                        },
-                        restore: {},
-                        saveAsImage: {}
-                    }
-                },
-                dataZoom: [{
-                    startValue: '2014-06-01'
-                }, {
-                    type: 'inside'
-                }],
-                
-                series:[
+        $.get("http://test.eibook.com.cn:8088/rainbow/battle/data.php", function(result){
+            vmData = JSON.parse(result);
+            console.log(vmData);
+            var myChart = echarts.init(document.getElementById('data-echarts'));
+            var option = {
+                    title: {
+                        text: '集资金额趋势图'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    xAxis: {
+                        data: vmData.xmj.data.map(function (item) {
+                            return item[0];
+                        })
+                    },
+                    yAxis: {
+                        splitLine: {
+                            show: false
+                        }
+                    },
+                    toolbox: {
+                        left: 'center',
+                        feature: {
+                            dataZoom: {
+                                yAxisIndex: 'none'
+                            },
+                            restore: {},
+                            saveAsImage: {}
+                        }
+                    },
+                    dataZoom: [{
+                        startValue: '2018-06-21 12:00'
+                    }, {
+                        type: 'inside'
+                    }],
+                    series: [
                     {
                         name: '孟美岐',
                         type: 'line',
                         data: vmData.mmq.data.map(function (item) {
-                            return item[1];
+                            return parseFloat(item[1]);
                         })
                     },
                     {
                         name: '徐梦洁',
                         type: 'line',
                         data: vmData.xmj.data.map(function (item) {
-                            return item[1];
+                            return parseFloat(item[1]);
                         })
                     },
                     {
                         name: '陈意涵',
                         type: 'line',
                         data: vmData.cyh.data.map(function (item) {
-                            return item[1];
+                            return parseFloat(item[1]);
                         })
                     },
                     {
                         name: '李紫婷',
                         type: 'line',
                         data: vmData.lzt.data.map(function (item) {
-                            return item[1];
+                            return parseFloat(item[1]);
                         })
                     },
                     {
                         name: '高秋梓',
                         type: 'line',
                         data: vmData.gqz.data.map(function (item) {
-                            return item[1];
+                            return parseFloat(item[1]);
                         })
                     },
                     {
                         name: '刘人语',
                         type: 'line',
                         data: vmData.lry.data.map(function (item) {
-                            return item[1];
+                            return parseFloat(item[1]);
                         })
                     }
                 ]
-            };
+                };
+            myChart.setOption(option);
+        });
         var vm = new Vue({
             el: '#actual',
             data: {
                 actual: data
             }
         });
-        myChart.setOption(option);
     </script>
 </html>
