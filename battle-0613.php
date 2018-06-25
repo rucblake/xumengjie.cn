@@ -27,7 +27,7 @@ $urls = array(
 );
 
 $referurl = "https://www.owhat.cn/index.html";
-echo "<h3>6月13日18:00 黑白人格Battle 数据实时更新表</h3>";
+echo "<h3>6月13日18:00 黑白人格Battle</h3>";
 echo "<table><thead><tr><th>后援会</th><th>当前金额</th><th>参与人数</th><th>总笔数</th><th>人均</th><th>笔均</th></tr></thead><tbody>";
 foreach($urls as $key => $value) {
     echo "<tr>";
@@ -65,5 +65,5 @@ foreach($urls as $key => $value) {
     curl_close($ch);
     echo "</tr>";
 }
-echo '<p>ps：增加了人均和笔均计算。</p><p>微博@杨文清Blake</a> | 一枚彩虹糖</p>';
+echo '<p>ps：增加了人均和笔均计算。</p><p>微博<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | 一枚彩虹糖</p>';
 ?>

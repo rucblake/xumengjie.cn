@@ -15,7 +15,7 @@ p,div,a {
     margin-top: 10px;
     position: absolute;
     display: flex;
-    top: 0;
+    top: 20px;
     z-index: 10;
     font-size: .3rem;
     height: .5rem;
@@ -49,7 +49,7 @@ p,div,a {
     width: 100%;
     height: 100%;
     text-align: center;
-    background: linear-gradient(to right,#493B68,#2D1C29);
+    background: linear-gradient(to bottom,#F5A3A6 30%,#E68285 80%, #933041);
 }
 
 .hello-rainbow img {
@@ -60,49 +60,75 @@ p,div,a {
 }
 
 .img-rainbow {
-    z-index: 4;
+    z-index: 2;
     opacity: 0;
-    animation: show .5s linear .5s forwards normal;
+    animation: show .5s linear 1s forwards normal;
 }
 
-.img-sheng {
+.img-chu {
     opacity: 0;
     z-index: 3;
-    animation: show .1s ease-in 2s forwards normal;
+    animation: show-font .2s ease-in 2s forwards normal;
 }
 
-.img-ri {
+.img-dao {
     opacity: 0;
-    z-index: 2;
-    animation: show .1s ease-in 2.3s forwards normal;
+    z-index: 3;
+    animation: show-font .2s ease-in 2.3s forwards normal;
 }
 
 .img-kuai {
     opacity: 0;
-    z-index: 5;
-    animation: show .1s ease-in 2.6s forwards normal;
+    z-index: 3;
+    animation: show-font .2s ease-in 2.6s forwards normal;
 }
 
 .img-le {
     opacity: 0;
-    z-index: 1;
-    animation: show .1s ease-in 2.9s forwards normal;
+    z-index: 3;
+    animation: show-font .2s ease-in 2.9s forwards normal;
+}
+
+.img-border {
+    opacity: 0;
+    z-index: 4;
+    animation: show-border .5s ease-in forwards normal;
+}
+
+.img-zhongshou {
+    opacity: 0;
+    z-index: 4;
+    animation: show-welcome 1s linear 3s forwards normal;
 }
 
 .welcome {
     color: #000;
     z-index: 6;
     position: absolute;
-    bottom: 1rem;
+    bottom: .5rem;
     left: 0;
     right: 0;
     margin: auto;
     width: 5rem;
     height: 1rem;
+    color: #333;
     line-height: .5rem;
     font-size: .3rem;
     opacity: 0;
     animation: show-welcome 1s linear 3s forwards normal;
+}
+
+@keyframes show-font{
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes show{
@@ -111,6 +137,17 @@ p,div,a {
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes show-border{
+    0% {
+        opacity: 1;
+        transform: scale3d(1.1,1.1,1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1,1,1);
     }
 }
 
@@ -191,6 +228,13 @@ p,div,a {
     margin: 20px;
 }
 
+.p-content {
+    font-size: .24rem;
+    text-indent: .48rem;
+    line-height: .4rem;
+    margin: 20px;
+}
+
 .a-baike {
     display: block;
     margin: 5px 20px;
@@ -216,6 +260,12 @@ p,div,a {
 
 .img-banner img {
     width: 100%;
+}
+
+.p-img img{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .contact-info {

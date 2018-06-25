@@ -94,8 +94,8 @@ foreach($urls as $key => $value) {
     </head>
     <body>
         <div id="actual">
-            <h3>6月21日12:00 Final Battle 数据实时更新表</h3>
-            <p>点击后援会名称可以跳转集资页面</p>
+            <h3>6月21日12:00 Final Battle</h3>
+            <p>6月13日“黑白人格”battle数据<a href="battle-0613.php">点击此处</a>查看 </p>
             <table class="actual-table">
                 <thead>
                     <tr>
@@ -155,8 +155,8 @@ foreach($urls as $key => $value) {
                 data: [["2018-06-21 12:00","0"]]
             }
         }
-        $.get("http://test.eibook.com.cn:8088/rainbow/battle/data.php", function(result){
-            vmData = JSON.parse(result);
+        $.get("data/battle0621.json", function(result){
+            vmData = result;
             console.log(vmData);
             var myChart = echarts.init(document.getElementById('data-echarts'));
             var option = {
