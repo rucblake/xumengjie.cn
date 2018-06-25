@@ -57,6 +57,31 @@ p,div,a {
     top: 0;
     position: absolute;
     height: 100%;
+    width: 100%;
+}
+
+.rainbow-bg {
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.rainbow-bg img{
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.front {
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
 }
 
 .img-rainbow {
@@ -103,7 +128,7 @@ p,div,a {
 
 .welcome {
     color: #000;
-    z-index: 6;
+    z-index: 9;
     position: absolute;
     bottom: .5rem;
     left: 0;
