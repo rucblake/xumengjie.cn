@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ECharts</title>
+  <script src="./echarts.min.js"></script>
+</head>
+<body>
+  <div id="main" style="max-width: 100%;height:400px;"></div>
+  <script type="text/javascript">
+    var chartData = {
+      time: [],
+      data: {}
+    };
+
+    fetch('./data/weishi.json', {
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }})
+      .then(res => {
+        if (res.ok) {
+          return res.json;
+        } else {
+          throw new Error('I cannot get the response');
+        }
+      })
+      .then(data => {
+        data.forEach(obj => {
+          chartData.time.push(obj.time);
+          obj.data.forEach(o => {
+            const dbNum =  parseInt(o.dbNum);
+            if (chartData.data[o.name]) {
+              chartData.data[o.name].push(dbNum);
+            } else {
+              chartData.data[o.name] = [dbNum];
+            }
+          })})
+      });
+
+    // delete chartData.data["小辫儿张云雷"];
+    // delete chartData.data["陈立农"];
+
+    const name = Object.keys(chartData.data);
+    const series = name.map(d => {
+      return {
+        name: d,
+        type: 'line',
+        data: chartData.data[d]
+      }
+    })
+    option = {
+      title: {
+        text: '微视明星榜(一万为单位)'
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: name
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: chartData.time
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: series
+  };
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption(option);
+  </script>
+</body>
+</html>
