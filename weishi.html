@@ -20,7 +20,7 @@
       }})
       .then(res => {
         if (res.ok) {
-          return res.json;
+          return res.json();
         } else {
           throw new Error('I cannot get the response');
         }
@@ -36,47 +36,50 @@
               chartData.data[o.name] = [dbNum];
             }
           })})
+          setEchart();
       });
 
     // delete chartData.data["小辫儿张云雷"];
     // delete chartData.data["陈立农"];
 
-    const name = Object.keys(chartData.data);
-    const series = name.map(d => {
-      return {
-        name: d,
-        type: 'line',
-        data: chartData.data[d]
-      }
-    })
-    option = {
-      title: {
-        text: '微视明星榜(以万为单位)'
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        data: name
-      },
-      grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: chartData.time
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: series
-  };
-    var myChart = echarts.init(document.getElementById('main'));
-    myChart.setOption(option);
+    function setEchart() {
+      const name = Object.keys(chartData.data);
+      const series = name.map(d => {
+        return {
+          name: d,
+          type: 'line',
+          data: chartData.data[d]
+        }
+      })
+      option = {
+        title: {
+          text: '微视明星榜(以万为单位)'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: name
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: chartData.time
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: series
+    };
+      var myChart = echarts.init(document.getElementById('main'));
+      myChart.setOption(option);
+    }
   </script>
 </body>
 </html>
