@@ -39,10 +39,9 @@
           setEchart();
       });
 
-    // delete chartData.data["小辫儿张云雷"];
-    // delete chartData.data["陈立农"];
-
     function setEchart() {
+      delete chartData.data["小辫儿张云雷"];
+      delete chartData.data["陈立农"];
       const name = Object.keys(chartData.data);
       const series = name.map(d => {
         return {
