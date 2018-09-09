@@ -71,6 +71,10 @@ if (isset($_GET['phone'])) {
                     <td>快递单号</td>
                     <td>{{ info.number }}</td>
                 </tr>
+                <tr class="info">
+                    <td>备注</td>
+                    <td>{{ info.tip }}</td>
+                </tr>
                 </tbody>
             </table>
         </div>
