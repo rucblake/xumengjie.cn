@@ -29,30 +29,36 @@
         data.forEach(obj => {
           chartData.time.push(obj.time);
           obj.data.forEach(o => {
-            const dbNum =  parseInt(o.dbNum);
-            if (chartData.data[o.name]) {
-              chartData.data[o.name].push(dbNum);
+              const item = {
+                  dbNum: o.dbNum,
+                  name: o.name
+              };
+            if (chartData.data[o.feedid]) {
+              chartData.data[o.feedid].push(item);
             } else {
-              chartData.data[o.name] = [dbNum];
+              chartData.data[o.feedid] = [item];
             }
-          })})
+          })});
           setEchart();
       });
 
     function setEchart() {
-      delete chartData.data["小辫儿张云雷"];
-      delete chartData.data["陈立农"];
-      const name = Object.keys(chartData.data);
-      const series = name.map(d => {
+      const feedid = Object.keys(chartData.data);
+      const series = feedid.map(d => {
+          var eDbNum = [];
+          for (var i in chartData.data[d]) {
+              console.log(chartData.data[d][i]);
+              eDbNum.push(chartData.data[d][i].dbNum);
+          }
         return {
-          name: d,
+          name: chartData.data[d][0].name,
           type: 'line',
-          data: chartData.data[d]
+          data: eDbNum
         }
-      })
+      });
       option = {
         title: {
-          text: '微视明星榜(以万为单位)'
+          text: '微视明星榜'
         },
         tooltip: {
           trigger: 'axis'
