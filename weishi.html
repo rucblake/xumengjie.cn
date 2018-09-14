@@ -13,8 +13,7 @@
       data: {}
     };
 
-    const idList = ['6X6fGbLN11FX2AkGJ', '6YCCj521U1FVDyrUZ', '6YCCqWpDp1FVjXNPB', '6YCCqWpDp1G0qzcjA', '70KllsbwU1FYVPzqb', '71ajPX5zM1FYcUc9P', '71kYSmb5T1FWH4kHk', '71ajPX5zM1FYcUc9P'];
-
+    const idList = ['1533094129590089', '1523531129987967', '1518171062093059', '1531013105741172', '1523531013831494', '1532488530256054', '1527675032405982', '1535102593254289'];
     fetch('data/weishi.json', {
       credentials: 'include',
       headers: {
@@ -35,11 +34,11 @@
                   dbNum: o.dbNum,
                   name: o.name
               };
-            if (idList.indexOf(o.feedid) > -1) {
-                if (chartData.data[o.feedid]) {
-                    chartData.data[o.feedid].push(item);
+            if (idList.indexOf(o.id) > -1) {
+                if (chartData.data[o.id]) {
+                    chartData.data[o.id].push(item);
                 } else {
-                    chartData.data[o.feedid] = [item];
+                    chartData.data[o.id] = [item];
                 }
             }
           })});
@@ -47,8 +46,8 @@
       });
 
     function setEchart() {
-      const feedid = Object.keys(chartData.data);
-      const series = feedid.map(d => {
+      const id = Object.keys(chartData.data);
+      const series = id.map(d => {
           var eDbNum = [];
           for (var i in chartData.data[d]) {
               eDbNum.push(chartData.data[d][i].dbNum);
@@ -61,7 +60,7 @@
       });
       option = {
         title: {
-          text: '微视明星榜'
+          text: '微视明星榜（总榜）'
         },
         tooltip: {
           trigger: 'axis'
