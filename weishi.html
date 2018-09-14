@@ -13,6 +13,8 @@
       data: {}
     };
 
+    const idList = ['6X6fGbLN11FX2AkGJ', '6YCCj521U1FVDyrUZ', '6YCCqWpDp1FVjXNPB', '6YCCqWpDp1G0qzcjA', '70KllsbwU1FYVPzqb', '71ajPX5zM1FYcUc9P', '71kYSmb5T1FWH4kHk', '71ajPX5zM1FYcUc9P'];
+
     fetch('data/weishi.json', {
       credentials: 'include',
       headers: {
@@ -33,10 +35,12 @@
                   dbNum: o.dbNum,
                   name: o.name
               };
-            if (chartData.data[o.feedid]) {
-              chartData.data[o.feedid].push(item);
-            } else {
-              chartData.data[o.feedid] = [item];
+            if (idList.indexOf(o.feedid) > -1) {
+                if (chartData.data[o.feedid]) {
+                    chartData.data[o.feedid].push(item);
+                } else {
+                    chartData.data[o.feedid] = [item];
+                }
             }
           })});
           setEchart();
@@ -47,7 +51,6 @@
       const series = feedid.map(d => {
           var eDbNum = [];
           for (var i in chartData.data[d]) {
-              console.log(chartData.data[d][i]);
               eDbNum.push(chartData.data[d][i].dbNum);
           }
         return {
