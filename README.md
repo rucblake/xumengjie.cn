@@ -4,4 +4,4 @@
 
 - 微博:[@杨文清Blake](http://weibo.com/u/1039990062)
 
-- 网站使用php - laravel框架 (version5.5)
+- PHP Framework : [Laravel](https://laravel.com/) (version5.5)
