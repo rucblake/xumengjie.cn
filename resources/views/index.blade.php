@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>徐梦洁 - xumengjie.cn - 徐梦洁中文首站</title>
-    <meta name="description" content="火箭少女101成员徐梦洁的中文首站。收录徐梦洁的相关视频和文章。2018年4月21日，以练习生的身份参加由腾讯视频出品的女团竞演节目《创造101》，最终以第11名的成绩加入火箭少女101，成功出道。">
-    <meta name="Keywords" content="徐梦洁,徐梦洁中文首站,xumengjie,xumengjie.cn,个人网站,徐梦洁视频,创造101,火箭少女,蜜蜂少女队">
+    <title>徐梦洁中文网 - xumengjie.cn - 徐梦洁</title>
+    <meta name="description" content="徐梦洁中文网，收录火箭少女101成员-徐梦洁的相关视频和文章等信息。徐梦洁，2018年4月21日，以练习生的身份参加由腾讯视频出品的女团竞演节目《创造101》，最终以第11名的成绩加入火箭少女101，成功出道。">
+    <meta name="Keywords" content="徐梦洁中文网,徐梦洁,xumengjie,xumengjie.cn,中文网站,徐梦洁视频,创造101,火箭少女,蜜蜂少女队">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
     <script>
         var deviceWidth = document.documentElement.clientWidth;
@@ -12,11 +12,11 @@
             location.href = "pc/";
         }
     </script>
-    <script src="pc/dep/jquery.min.js"></script>
+    <script src="/lib/jquery.min.js"></script>
     <script>
         $('html').css("cssText", "font-size:"+(deviceWidth / 6.4)+"px !important;");
     </script>
-    <link href="css/mobile.css?v={{ $version }}" rel="stylesheet">
+    <link href="/css/mobile.css?v={{ $version }}" rel="stylesheet">
     <script>
         var _hmt = _hmt || [];
         (function() {
@@ -36,27 +36,27 @@
 </div>
 <section id="hello">
     <div class="hello-rainbow">
-        <img class="img-chu" src="img/chu-2.png">
-        <img class="img-dao" src="img/dao-2.png">
-        <img class="img-kuai" src="img/kuai-2.png">
-        <img class="img-le" src="img/le-2.png">
-        <img class="img-border" src="img/rg-border.png">
+        <img class="img-chu" src="/img/chu-2.png">
+        <img class="img-dao" src="/img/dao-2.png">
+        <img class="img-kuai" src="/img/kuai-2.png">
+        <img class="img-le" src="/img/le-2.png">
+        <img class="img-border" src="/img/rg-border.png">
         <a href="#intro" class="welcome target"><div class="welcome-bg"></div>“追梦不停步，笑眼里就有彩虹”<br>我是Rainbow - 徐梦洁。</a>
-        <img class="img-zhongshou" src="img/zhongshou.png">
+        <img class="img-zhongshou" src="/img/zhongshou.png">
     </div>
     <div class="rainbow-bg">
-        <img src="img/rainbow-2.png">
+        <img src="/img/rainbow-2.png">
     </div>
     <div class="front"></div>
 </section>
 <section id="intro">
     <div class="title">
             <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
         <span>徐梦洁</span>
         <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
     </div>
     <p class="p-content">徐梦洁，1994年6月19日出生于浙江省金华市，中国内地流行乐女歌手、模特、演员，中国内地女子演唱组合蜜蜂少女队、火箭少女101成员。</p>
@@ -65,22 +65,22 @@
     <a class="a-baike" href="https://baike.baidu.com/item/%E5%BE%90%E6%A2%A6%E6%B4%81" target="_blank">- 百度百科 : 徐梦洁</a>
 </section>
 <div class="img-banner">
-    <img src="img/banner3.jpg">
+    <img src="/img/banner3.jpg">
 </div>
 <!--<a class="p-go" href="http://v.qq.com/biu/doki_personal/index?fantuanId=51661514&starId=1661514" target="_blank"><p class="bottom">《创造101》决赛冲刺阶段！<br>戳这里给徐梦洁投票吧！</p></a>-->
 <section id="news">
     <div class="title">
             <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
         <span>不一样的彩虹</span>
         <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
     </div>
     <div class="list">
         <div class="item">
-            <a class="item-title" href="article/1.html" target="_blank">徐梦洁写给女团创始人的信 - 文章</a>
+            <a class="item-title" href="/article/detail/1" target="_blank">徐梦洁写给女团创始人的信 - 文章</a>
             <p class="item-desc">"彩虹"下有大树，大树下有彩虹。彩虹的心里住着一个"彩虹"梦，你们一定也跟我一样。</p>
         </div>
         <div class="item">
@@ -93,17 +93,17 @@
         </div>
     </div>
     <div class="img-banner">
-        <img src="img/banner4.jpg">
+        <img src="/img/banner4.jpg">
     </div>
 </section>
 <section id="video-101">
     <div class="title">
             <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
         <span>创造101直拍</span>
         <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
     </div>
 
@@ -130,17 +130,17 @@
         </div>
     </div>
     <div class="img-banner">
-        <img src="img/banner2.jpg">
+        <img src="/img/banner2.jpg">
     </div>
 </section>
 <section id="video-other">
     <div class="title">
             <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
         <span>其他视频</span>
         <span class="rainbow-icon">
-                <img src="img/rainbow-ico.png">
+                <img src="/img/rainbow-ico.png">
             </span>
     </div>
 
@@ -164,10 +164,11 @@
     </div>
 </section>
 <div class="img-banner">
-    <img src="img/banner1.jpg">
+    <img src="/img/banner1.jpg">
 </div>
 <p class="contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
 </body>
+<script
 <script>
     $(".target").click(function () {
         $("html, body").animate({scrollTop: $($(this).attr("href")).offset().top + "px"}, 500);

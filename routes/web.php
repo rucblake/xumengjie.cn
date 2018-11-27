@@ -12,3 +12,8 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/pc', function () {
+    return view('pc');
+});
+
+Route::get('/article/detail/{id}', 'ArticleController@detail');
