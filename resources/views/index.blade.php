@@ -37,27 +37,26 @@
 </div>
 <section id="hello">
     <div class="hello-rainbow">
-        <img class="img-chu" src="/img/chu-2.png">
-        <img class="img-dao" src="/img/dao-2.png">
-        <img class="img-kuai" src="/img/kuai-2.png">
-        <img class="img-le" src="/img/le-2.png">
-        <img class="img-border" src="/img/rg-border.png">
+        <img class="img-chu" src="{{ $word1 }}">
+        <img class="img-dao" src="{{ $word2 }}">
+        <img class="img-kuai" src="{{ $word3 }}">
+        <img class="img-le" src="{{ $word4 }}">
+        <img class="img-border" src="{{ $border }}">
         <a href="#intro" class="welcome target"><div class="welcome-bg"></div>“追梦不停步，笑眼里就有彩虹”<br>我是Rainbow - 徐梦洁。</a>
-        <img class="img-zhongshou" src="/img/zhongshou.png">
     </div>
     <div class="rainbow-bg">
-        <img src="/img/rainbow-2.png">
+        <img src="{{ $rainbow }}">
     </div>
     <div class="front"></div>
 </section>
 <section id="intro">
     <div class="title">
             <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
         <span>徐梦洁</span>
         <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
     </div>
     <p class="p-content">徐梦洁，1994年6月19日出生于浙江省金华市，中国内地流行乐女歌手、模特、演员，中国内地女子演唱组合蜜蜂少女队、火箭少女101成员。</p>
@@ -66,17 +65,17 @@
     <a class="a-baike" href="https://baike.baidu.com/item/%E5%BE%90%E6%A2%A6%E6%B4%81" target="_blank">- 百度百科 : 徐梦洁</a>
 </section>
 <div class="img-banner">
-    <img src="/img/banner3.jpg">
+    <img src="{{ $banner1 }}">
 </div>
 <div id="app">
     <section id="news">
         <div class="title">
             <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
             <span>不一样的彩虹</span>
             <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
         </div>
         <div class="list">
@@ -86,17 +85,17 @@
             </div>
         </div>
         <div class="img-banner">
-            <img src="/img/banner4.jpg">
+            <img src="{{ $banner2 }}">
         </div>
     </section>
     <section id="video-101">
         <div class="title">
             <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
             <span>创造101直拍</span>
             <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
         </div>
 
@@ -107,17 +106,17 @@
             </div>
         </div>
         <div class="img-banner">
-            <img src="/img/banner2.jpg">
+            <img src="{{ $banner3 }}">
         </div>
     </section>
     <section id="video-other">
         <div class="title">
             <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
             <span>其他视频</span>
             <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
+                <img src="{{ $ico }}">
             </span>
         </div>
 
@@ -130,7 +129,7 @@
     </section>
 </div>
 <div class="img-banner">
-    <img src="/img/banner1.jpg">
+    <img src="{{ $banner4 }}">
 </div>
 <p class="contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
 </body>
