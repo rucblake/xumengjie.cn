@@ -17,3 +17,7 @@ Route::get('/pc', function () {
 });
 
 Route::get('/article/detail/{id}', 'ArticleController@detail');
+
+Route::post('/video/list', 'VideoController@list');
+
+Route::post('/news/list', 'NewsController@list');

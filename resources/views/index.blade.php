@@ -5,7 +5,8 @@
     <title>徐梦洁中文网 - xumengjie.cn - 徐梦洁</title>
     <meta name="description" content="徐梦洁中文网，收录火箭少女101成员-徐梦洁的相关视频和文章等信息。徐梦洁，2018年4月21日，以练习生的身份参加由腾讯视频出品的女团竞演节目《创造101》，最终以第11名的成绩加入火箭少女101，成功出道。">
     <meta name="Keywords" content="徐梦洁中文网,徐梦洁,xumengjie,xumengjie.cn,中文网站,徐梦洁视频,创造101,火箭少女,蜜蜂少女队">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         var deviceWidth = document.documentElement.clientWidth;
         if(deviceWidth > 640) {
@@ -67,109 +68,154 @@
 <div class="img-banner">
     <img src="/img/banner3.jpg">
 </div>
-<!--<a class="p-go" href="http://v.qq.com/biu/doki_personal/index?fantuanId=51661514&starId=1661514" target="_blank"><p class="bottom">《创造101》决赛冲刺阶段！<br>戳这里给徐梦洁投票吧！</p></a>-->
-<section id="news">
-    <div class="title">
+<div id="app">
+    <section id="news">
+        <div class="title">
             <span class="rainbow-icon">
                 <img src="/img/rainbow-ico.png">
             </span>
-        <span>不一样的彩虹</span>
-        <span class="rainbow-icon">
-                <img src="/img/rainbow-ico.png">
-            </span>
-    </div>
-    <div class="list">
-        <div class="item">
-            <a class="item-title" href="/article/detail/1" target="_blank">徐梦洁写给女团创始人的信 - 文章</a>
-            <p class="item-desc">"彩虹"下有大树，大树下有彩虹。彩虹的心里住着一个"彩虹"梦，你们一定也跟我一样。</p>
-        </div>
-        <div class="item">
-            <a class="item-title" href="https://www.douban.com/group/topic/116051923/" target="_blank">徐梦洁豆瓣创组专楼 - 豆瓣小组</a>
-            <p class="item-desc">倒序更新徐梦洁相关的资源。</p>
-        </div>
-        <div class="item">
-            <a class="item-title" href="https://www.douban.com/group/topic/118234479/" target="_blank">徐梦洁深度剖析 - 豆瓣小组</a>
-            <p class="item-desc">笑容，舞蹈，表情管理，颜值，小彩虹的亮点都被低估了！</p>
-        </div>
-    </div>
-    <div class="img-banner">
-        <img src="/img/banner4.jpg">
-    </div>
-</section>
-<section id="video-101">
-    <div class="title">
+            <span>不一样的彩虹</span>
             <span class="rainbow-icon">
                 <img src="/img/rainbow-ico.png">
             </span>
-        <span>创造101直拍</span>
-        <span class="rainbow-icon">
+        </div>
+        <div class="list">
+            <div class="item" v-for="item in news.list">
+                <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
+                <p class="item-desc">@{{ item.desc }}</p>
+            </div>
+        </div>
+        <div class="img-banner">
+            <img src="/img/banner4.jpg">
+        </div>
+    </section>
+    <section id="video-101">
+        <div class="title">
+            <span class="rainbow-icon">
                 <img src="/img/rainbow-ico.png">
             </span>
-    </div>
+            <span>创造101直拍</span>
+            <span class="rainbow-icon">
+                <img src="/img/rainbow-ico.png">
+            </span>
+        </div>
 
-    <div class="list">
-        <div class="item">
-            <a class="item-title" href="https://v.qq.com/x/cover/1l3ed1p9osnp325/u0026y4no0w.html" target="_blank">《盛放》 - 腾讯视频</a>
-            <p class="item-desc zhipai-desc">总决赛直拍。</p>
+        <div class="list">
+            <div class="item" v-for="item in video.p101.list">
+                <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
+                <p class="item-desc">@{{ item.desc }}</p>
+            </div>
         </div>
-        <div class="item">
-            <a class="item-title" href="https://v.qq.com/x/cover/f3yb39peol4fy22/m0026grttig.html" target="_blank">《我就是这种女孩》 - 腾讯视频</a>
-            <p class="item-desc zhipai-desc">第三次公演直拍。</p>
+        <div class="img-banner">
+            <img src="/img/banner2.jpg">
         </div>
-        <div class="item">
-            <a class="item-title" href="https://v.qq.com/x/page/r002661pm67.html" target="_blank">《Look What You Made Me Do》 - 腾讯视频</a>
-            <p class="item-desc zhipai-desc">第二次公演直拍。</p>
-        </div>
-        <div class="item">
-            <a class="item-title" href="https://v.qq.com/x/page/r00269jod00.html" target="_blank">《Sugar》 - 腾讯视频</a>
-            <p class="item-desc zhipai-desc">首次公演直拍。</p>
-        </div>
-        <div class="item">
-            <a class="item-title" href="https://v.qq.com/x/page/u0026h2gmw8.html" target="_blank">《创造101主题曲》 - 腾讯视频</a>
-            <p class="item-desc zhipai-desc">主题曲直拍。</p>
-        </div>
-    </div>
-    <div class="img-banner">
-        <img src="/img/banner2.jpg">
-    </div>
-</section>
-<section id="video-other">
-    <div class="title">
+    </section>
+    <section id="video-other">
+        <div class="title">
             <span class="rainbow-icon">
                 <img src="/img/rainbow-ico.png">
             </span>
-        <span>其他视频</span>
-        <span class="rainbow-icon">
+            <span>其他视频</span>
+            <span class="rainbow-icon">
                 <img src="/img/rainbow-ico.png">
             </span>
-    </div>
+        </div>
 
-    <div class="list">
-        <div class="item">
-            <a class="item-title" href="https://m.weibo.cn/status/4252676302591935" target="_blank">徐梦洁生贺纪录片 - 微博</a>
-            <p class="item-desc">小彩虹，你为之努力的梦，彩虹糖陪你到底！</p>
+        <div class="list">
+            <div class="item" v-for="item in video.normal.list">
+                <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
+                <p class="item-desc">@{{ item.desc }}</p>
+            </div>
         </div>
-        <div class="item">
-            <a class="item-title" href="https://v.qq.com/x/cover/0z1tntyj83i4t7q/y0026nljszr.html" target="_blank">徐梦洁罗怡恬双人舞 - 腾讯视频</a>
-            <p class="item-desc">【明星小考】炖冻豆腐组合惊艳全场。</p>
-        </div>
-        <div class="item">
-            <a class="item-title" href="http://t.cn/R1r376T?m=4248636374001212&u=6019320586" target="_blank">《不要回家穿鸡爪》 - 粉丝自制</a>
-            <p class="item-desc">彩虹笑的多可爱，不要让她回家穿鸡爪。</p>
-        </div>
-        <div class="item">
-            <a class="item-title" href="https://v.qq.com/x/cover/twu995cadnasuk0/n0696rb04ou.html" target="_blank">【饭制22人回顾篇】徐梦洁 - 腾讯视频</a>
-            <p class="item-desc">彩虹女孩成长点滴，灿烂笑容点亮创造101。</p>
-        </div>
-    </div>
-</section>
+    </section>
+</div>
 <div class="img-banner">
     <img src="/img/banner1.jpg">
 </div>
 <p class="contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
 </body>
-<script
+<script src="/lib/vue.min.js"></script>
 <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            news: {
+                currentPage: 1,
+                pageSize: 5,
+            },
+            video: {
+                normal: {
+                    currentPage: 1,
+                    pageSize: 5,
+                },
+                p101: {
+                    currentPage: 1,
+                    pageSize: 5,
+                },
+            },
+        },
+        methods: {
+            getNewsList: function () {
+                var postData = {
+                    currentPage: this.news.currentPage,
+                    pageSize: this.news.pageSize,
+                };
+                $.ajax({
+                    url: '/news/list',
+                    type: 'post',
+                    data: postData,
+                    dataType: 'json',
+                    success: function (result) {
+                        vm.news = result.data;
+                    },
+                    error: function () {
+                        alert('网络异常');
+                    }
+                });
+            },
+            getVideoList: function () {
+                var postData = {
+                    currentPage: this.news.currentPage,
+                    pageSize: this.news.pageSize,
+                    type: 0
+                };
+                $.ajax({
+                    url: '/video/list',
+                    type: 'post',
+                    data: postData,
+                    dataType: 'json',
+                    success: function (result) {
+                        vm.video.p101 = result.data;
+                    },
+                    error: function () {
+                        alert('网络异常');
+                    }
+                });
+                postData.type = 1;
+                $.ajax({
+                    url: '/video/list',
+                    type: 'post',
+                    data: postData,
+                    dataType: 'json',
+                    success: function (result) {
+                        vm.video.normal = result.data;
+                    },
+                    error: function () {
+                        alert('网络异常');
+                    }
+                });
+            }
+        }
+    });
+    $(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        vm.getNewsList();
+        vm.getVideoList();
+    });
     $(".target").click(function () {
         $("html, body").animate({scrollTop: $($(this).attr("href")).offset().top + "px"}, 500);
         return false;
