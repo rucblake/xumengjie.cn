@@ -43,6 +43,7 @@
         <img class="img-le" src="{{ $word4 }}">
         <img class="img-border" src="{{ $border }}">
         <a href="#intro" class="welcome target"><div class="welcome-bg"></div>“追梦不停步，笑眼里就有彩虹”<br>我是Rainbow - 徐梦洁。</a>
+        <img class="img-zhongshou" src="{{ $cn }}">
     </div>
     <div class="rainbow-bg">
         <img src="{{ $rainbow }}">
