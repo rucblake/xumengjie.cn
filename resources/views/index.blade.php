@@ -6,7 +6,6 @@
     <meta name="description" content="徐梦洁中文网，收录火箭少女101成员-徐梦洁的相关视频和文章等信息。徐梦洁，2018年4月21日，以练习生的身份参加由腾讯视频出品的女团竞演节目《创造101》，最终以第11名的成绩加入火箭少女101，成功出道。">
     <meta name="Keywords" content="徐梦洁中文网,徐梦洁,xumengjie,xumengjie.cn,中文网站,徐梦洁视频,创造101,火箭少女,蜜蜂少女队">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         var deviceWidth = document.documentElement.clientWidth;
         if(deviceWidth > 640) {

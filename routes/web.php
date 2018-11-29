@@ -16,6 +16,11 @@ Route::get('/pc', function () {
     return view('pc');
 });
 
+Route::get('/image/upload', function () {
+    return view('uploadImage');
+});
+Route::post('/image/upload', 'ImageController@upload');
+
 Route::get('/article/detail/{id}', 'ArticleController@detail');
 
 Route::post('/video/list', 'VideoController@list');
