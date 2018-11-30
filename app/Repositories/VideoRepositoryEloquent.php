@@ -40,4 +40,9 @@ class VideoRepositoryEloquent extends BaseRepository implements VideoRepository
         return $this->model->where('type', $type)->orderBy('id', 'DESC')
             ->paginate($pageSize, Video::LIST_KEY, Video::PAGE_NAME, $currentPage);
     }
+
+    public function getHomeData($type, $count)
+    {
+        return $this->model->where('type', $type)->orderBy('id', 'DESC')->limit($count)->get();
+    }
 }

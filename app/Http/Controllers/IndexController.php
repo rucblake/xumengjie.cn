@@ -18,9 +18,12 @@ class IndexController extends Controller
     {
         $data = [];
         $conf = $this->indexService->getIndexConf();
+        $homeData = $this->indexService->getHomeData();
         foreach ($conf as $item) {
             $data[$item['key']] = $item['value'];
         }
+        $data['home'] = json_encode($homeData, 256);
         return view('index', $data);
     }
+
 }

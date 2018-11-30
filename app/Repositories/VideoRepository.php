@@ -11,4 +11,6 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface VideoRepository extends RepositoryInterface
 {
     public function getVideoList($currentPage, $pageSize, $type);
+
+    public function getHomeData($type, $count);
 }

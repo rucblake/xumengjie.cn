@@ -10,5 +10,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface ImageRepository extends RepositoryInterface
 {
-    //
+    public function getImageList($currentPage, $pageSize);
+
+    public function getHomeData($count);
 }

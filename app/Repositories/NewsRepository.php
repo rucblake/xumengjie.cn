@@ -11,4 +11,6 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface NewsRepository extends RepositoryInterface
 {
     public function getNewsList($currentPage, $pageSize);
+
+    public function getHomeData($count);
 }

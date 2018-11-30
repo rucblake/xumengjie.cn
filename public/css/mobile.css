@@ -307,3 +307,35 @@ p,div,a {
     left: 20px;
     font-weight: 700;
 }
+
+.loading {
+    font-size: .24rem;
+    text-align: center;
+    margin: 20px;
+}
+
+.page-control {
+    position: relative;
+    text-align: center;
+    font-size: .24rem;
+    color: #CD3278;
+    margin: 0 auto 20px auto;
+}
+
+.page-count {
+    position: relative;
+}
+
+.page-btn {
+    width: 2rem;
+    position: absolute;
+    top: 0;
+}
+
+.last-page {
+    left: -2rem;
+}
+
+.next-page {
+    right: -2rem;
+}

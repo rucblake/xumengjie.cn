@@ -17,15 +17,6 @@
         $('html').css("cssText", "font-size:"+(deviceWidth / 6.4)+"px !important;");
     </script>
     <link href="/css/mobile.css?v={{ $version }}" rel="stylesheet">
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?7e1a0f0a5672c05b21e4d2953405bf3c";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
 </head>
 <body>
 <div class="header">
@@ -79,7 +70,7 @@
             </span>
         </div>
         <div class="list">
-            <div class="item" v-for="item in news.list">
+            <div class="item" v-for="item in home.news">
                 <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
                 <p class="item-desc">@{{ item.desc }}</p>
             </div>
@@ -100,7 +91,7 @@
         </div>
 
         <div class="list">
-            <div class="item" v-for="item in video.p101.list">
+            <div class="item" v-for="item in home.video.p101">
                 <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
                 <p class="item-desc">@{{ item.desc }}</p>
             </div>
@@ -121,7 +112,7 @@
         </div>
 
         <div class="list">
-            <div class="item" v-for="item in video.normal.list">
+            <div class="item" v-for="item in home.video.normal">
                 <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
                 <p class="item-desc">@{{ item.desc }}</p>
             </div>
@@ -134,86 +125,23 @@
 <p class="contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
 </body>
 <script src="/lib/vue.min.js"></script>
+<script src="/js/share.js"></script>
 <script>
     var vm = new Vue({
         el: '#app',
         data: {
-            news: {
-                currentPage: 1,
-                pageSize: 5,
-            },
-            video: {
-                normal: {
-                    currentPage: 1,
-                    pageSize: 5,
+            home: {
+                video: {
+                    p101: [],
+                    normal: [],
                 },
-                p101: {
-                    currentPage: 1,
-                    pageSize: 5,
-                },
-            },
+                news: [],
+                image: [],
+            }
         },
-        methods: {
-            getNewsList: function () {
-                var postData = {
-                    currentPage: this.news.currentPage,
-                    pageSize: this.news.pageSize,
-                };
-                $.ajax({
-                    url: '/news/list',
-                    type: 'post',
-                    data: postData,
-                    dataType: 'json',
-                    success: function (result) {
-                        vm.news = result.data;
-                    },
-                    error: function () {
-                        alert('网络异常');
-                    }
-                });
-            },
-            getVideoList: function () {
-                var postData = {
-                    currentPage: this.news.currentPage,
-                    pageSize: this.news.pageSize,
-                    type: 0
-                };
-                $.ajax({
-                    url: '/video/list',
-                    type: 'post',
-                    data: postData,
-                    dataType: 'json',
-                    success: function (result) {
-                        vm.video.p101 = result.data;
-                    },
-                    error: function () {
-                        alert('网络异常');
-                    }
-                });
-                postData.type = 1;
-                $.ajax({
-                    url: '/video/list',
-                    type: 'post',
-                    data: postData,
-                    dataType: 'json',
-                    success: function (result) {
-                        vm.video.normal = result.data;
-                    },
-                    error: function () {
-                        alert('网络异常');
-                    }
-                });
-            }
+        mounted:function () {
+            this.home = {!! $home !!};
         }
-    });
-    $(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        vm.getNewsList();
-        vm.getVideoList();
     });
     $(".target").click(function () {
         $("html, body").animate({scrollTop: $($(this).attr("href")).offset().top + "px"}, 500);

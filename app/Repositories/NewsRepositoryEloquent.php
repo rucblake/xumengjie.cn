@@ -39,4 +39,9 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
         $pageSize = $pageSize < Constant::MAX_PAGE_SIZE ? $pageSize : Constant::MAX_PAGE_SIZE;
         return $this->model->orderBy('id', 'DESC')->paginate($pageSize, News::LIST_KEY, News::PAGE_NAME, $currentPage);
     }
+
+    public function getHomeData($count)
+    {
+        return $this->model->orderBy('id', 'DESC')->limit($count)->get();
+    }
 }

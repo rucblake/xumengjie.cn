@@ -6,7 +6,6 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\ImageRepository;
 use App\Entities\Image;
-use App\Validators\ImageValidator;
 
 /**
  * Class ImageRepositoryEloquent
@@ -32,5 +31,16 @@ class ImageRepositoryEloquent extends BaseRepository implements ImageRepository
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function getImageList($currentPage, $pageSize)
+    {
+        $pageSize = $pageSize < Constant::MAX_PAGE_SIZE ? $pageSize : Constant::MAX_PAGE_SIZE;
+        return $this->model->orderBy('id', 'DESC')->paginate($pageSize, Image::LIST_KEY, Image::PAGE_NAME, $currentPage);
+    }
+
+    public function getHomeData($count)
+    {
+        return $this->model->orderBy('id', 'DESC')->limit($count)->get();
     }
 }

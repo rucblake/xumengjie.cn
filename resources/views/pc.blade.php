@@ -14,13 +14,6 @@
         if(deviceWidth < 640) {
             location.href = "/";
         }
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?7e1a0f0a5672c05b21e4d2953405bf3c";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
     </script>
 </head>
 <body>
@@ -173,6 +166,7 @@
 <script src="/lib/jquery.min.js"></script>
 <script src="/lib/bootstrap.min.js"></script>
 <script src="/lib/swiper.min.js"></script>
+<script src="/js/share.js"></script>
 <script>
     $(function () {
         var swiper1 = new Swiper('.top-imgs', {

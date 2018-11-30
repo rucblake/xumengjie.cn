@@ -16,13 +16,12 @@ Route::get('/pc', function () {
     return view('pc');
 });
 
-Route::get('/image/upload', function () {
-    return view('uploadImage');
-});
-Route::post('/image/upload', 'ImageController@upload');
 
 Route::get('/article/detail/{id}', 'ArticleController@detail');
 
-Route::post('/video/list', 'VideoController@list');
 
+Route::post('/video/list', 'VideoController@list');
+Route::get('/{type}/list', function ($type) {
+    return view('list.tpl', ['type' => $type]);
+});
 Route::post('/news/list', 'NewsController@list');

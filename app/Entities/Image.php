@@ -12,6 +12,10 @@ class Image extends Model implements Transformable
 
     const LIMIT_IMG_SIZE  = 10 * 1024 * 1024;
 
+    const PAGE_NAME = 'video_list';
+
+    const LIST_KEY = ['*'];
+
     protected $fillable = [];
 
 }
