@@ -68,7 +68,7 @@
             <span class="rainbow-icon">
                 <img src="{{ $ico }}">
             </span>
-            <a class="more-link" href="/image/list">more>></a>
+            <a class="more-link" href="/image/list">More>></a>
         </div>
         <p class="empty-line"></p>
         <div class="image-list">
@@ -93,7 +93,7 @@
             <span class="rainbow-icon">
                 <img src="{{ $ico }}">
             </span>
-            <a class="more-link" href="/news/list">more>></a>
+            <a class="more-link" href="/news/list">More>></a>
         </div>
         <div class="list">
             <div class="item" v-for="item in home.news">
@@ -135,7 +135,7 @@
             <span class="rainbow-icon">
                 <img src="{{ $ico }}">
             </span>
-            <a class="more-link" href="/video/list">more>></a>
+            <a class="more-link" href="/video/list">More>></a>
         </div>
 
         <div class="list">
