@@ -20,8 +20,10 @@ Route::get('/pc', function () {
 Route::get('/article/detail/{id}', 'ArticleController@detail');
 
 
-Route::post('/video/list', 'VideoController@list');
 Route::get('/{type}/list', function ($type) {
     return view('list.tpl', ['type' => $type]);
 });
+
 Route::post('/news/list', 'NewsController@list');
+Route::post('/image/list', 'ImageController@list');
+Route::post('/video/list', 'VideoController@list');

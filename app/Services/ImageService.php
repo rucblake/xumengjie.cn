@@ -18,7 +18,7 @@ class ImageService {
 
     public function getImageList($currentPage, $pageSize)
     {
-        $list = $this->ImageRepository->getImageList($currentPage, $pageSize);
+        $list = $this->imageRepository->getImageList($currentPage, $pageSize);
         return PageUtil::getCommonPage($list);
     }
 

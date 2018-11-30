@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Entities\Common\Constant;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\ImageRepository;
