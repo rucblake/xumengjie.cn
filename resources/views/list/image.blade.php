@@ -100,7 +100,4 @@
             }
         }
     });
-    $(function () {
-        getImageList(vm.image);
-    })
 </script>

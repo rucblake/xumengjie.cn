@@ -204,6 +204,7 @@ p,div,a {
 }
 
 .title {
+    position: relative;
     padding: 20px;
     margin: 0 20px;
     text-align: center;
@@ -412,4 +413,16 @@ p,div,a {
     border-radius: 10px;
     background-color: #333;
     text-align: center;
+}
+
+.more-link {
+    position: absolute;
+    bottom: .4rem;
+    right: 0;
+    font-size: .28rem;
+    line-height: .36rem;
+}
+
+.empty-line {
+    height: 20px;
 }

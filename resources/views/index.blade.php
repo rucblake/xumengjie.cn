@@ -59,6 +59,31 @@
     <img src="{{ $banner1 }}">
 </div>
 <div id="app">
+    <section id="image">
+        <div class="title">
+            <span class="rainbow-icon">
+                <img src="{{ $ico }}">
+            </span>
+            <span>润宝图集</span>
+            <span class="rainbow-icon">
+                <img src="{{ $ico }}">
+            </span>
+            <a class="more-link" href="/image/list">more>></a>
+        </div>
+        <p class="empty-line"></p>
+        <div class="image-list">
+            <div class="image-div" v-for="item in home.image">
+                <img class="image" :src="getAttachUrl(item, 'small')" @click="showMidImage(item)">
+            </div>
+        </div>
+        <div class="mid-image" v-if="currentImage.show" style="display: none">
+            <div class="mid-image-bg"></div>
+            <div class="mid-image-div" @click="hiddenMidImage()">
+                <img :src="getAttachUrl(currentImage.data, 'mid')">
+            </div>
+            <div class="go-to-origin" @click="goToOrigin()">查看原图</div>
+        </div>
+    </section>
     <section id="news">
         <div class="title">
             <span class="rainbow-icon">
@@ -68,6 +93,7 @@
             <span class="rainbow-icon">
                 <img src="{{ $ico }}">
             </span>
+            <a class="more-link" href="/news/list">more>></a>
         </div>
         <div class="list">
             <div class="item" v-for="item in home.news">
@@ -109,6 +135,7 @@
             <span class="rainbow-icon">
                 <img src="{{ $ico }}">
             </span>
+            <a class="more-link" href="/video/list">more>></a>
         </div>
 
         <div class="list">
@@ -130,6 +157,10 @@
     var vm = new Vue({
         el: '#app',
         data: {
+            currentImage: {
+                show: false,
+                data: {},
+            },
             home: {
                 video: {
                     p101: [],
@@ -139,8 +170,26 @@
                 image: [],
             }
         },
+        beforeCreate: function() {
+            $(".mid-image").css('cssText', 'display: block;');
+        },
         mounted:function () {
             this.home = {!! $home !!};
+        },
+        methods: {
+            getAttachUrl: function (item, mode) {
+                return item.url + '/' + mode + '/' + item.hash_key + '.' + item.type;
+            },
+            showMidImage: function (item) {
+                this.currentImage.data = item;
+                this.currentImage.show = true;
+            },
+            hiddenMidImage: function() {
+                this.currentImage.show = false;
+            },
+            goToOrigin: function () {
+                location.href = this.getAttachUrl(this.currentImage.data, 'origin');
+            }
         }
     });
     $(".target").click(function () {
