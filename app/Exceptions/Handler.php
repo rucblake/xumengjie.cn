@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
@@ -71,7 +73,7 @@ class Handler extends ExceptionHandler
             'msg'  =>  $exception->getMessage(),
             'serverTime' => time(),
             'file' => sprintf("%s:%s",$exception->getFile(),$exception->getLine()),
-            'stackTrace' => App::isLocal() ? collect($exception->getTrace())->map(function ($trace) {
+            'stackTrace' => env('APP_DEBUG') ? collect($exception->getTrace())->map(function ($trace) {
                 return Arr::except($trace, ['args']);
             }):"",
         );
