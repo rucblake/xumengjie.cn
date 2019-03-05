@@ -4,15 +4,15 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\WeiboRepository;
-use App\Entities\Weibo;
-use App\Validators\WeiboValidator;
+use App\Repositories\WeiboUserRepository;
+use App\Entities\WeiboUser;
+use App\Validators\WeiboUserValidator;
 
 /**
- * Class WeiboRepositoryEloquent
+ * Class WeiboUserRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class WeiboRepositoryEloquent extends BaseRepository implements WeiboRepository
+class WeiboUserRepositoryEloquent extends BaseRepository implements WeiboUserRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +21,7 @@ class WeiboRepositoryEloquent extends BaseRepository implements WeiboRepository
      */
     public function model()
     {
-        return Weibo::class;
+        return WeiboUser::class;
     }
 
     
@@ -33,4 +33,5 @@ class WeiboRepositoryEloquent extends BaseRepository implements WeiboRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
 }

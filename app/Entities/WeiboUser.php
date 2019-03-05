@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Weibo extends Model implements Transformable
+class WeiboUser extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $guarded = ['id', 'create_at', 'update_at'];
 
 }

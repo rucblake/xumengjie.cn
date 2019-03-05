@@ -75,7 +75,7 @@ class Handler extends ExceptionHandler
             'file' => sprintf("%s:%s",$exception->getFile(),$exception->getLine()),
             'stackTrace' => env('APP_DEBUG') ? collect($exception->getTrace())->map(function ($trace) {
                 return Arr::except($trace, ['args']);
-            }):"",
+            }) : "",
         );
         return new JsonResponse(
             $ret, 200, [],

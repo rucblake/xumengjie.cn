@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: andingLJ
- * Date: 2018/3/19
- * Time: 12:05
- */
 
 namespace App\Libraries\Util;
 

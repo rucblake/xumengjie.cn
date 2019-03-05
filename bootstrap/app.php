@@ -11,6 +11,11 @@
 |
 */
 
+use Monolog\Formatter\LineFormatter;
+use App\Entities\Common\Constant;
+use Monolog\Handler\RotatingFileHandler;
+use Monolog\Logger;
+
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
@@ -40,6 +45,17 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
+
+$app->configureMonologUsing(function($monolog) {
+    $bubble = false;
+    $infoStreamHandler = new RotatingFileHandler(config('app.log_path') . 'xmj-info.log', config('app.log_max_files'), Logger::DEBUG, $bubble);
+    $infoStreamHandler->setFormatter(new LineFormatter(Constant::APP_LOG_FORMAT));
+    $monolog->pushHandler($infoStreamHandler);
+
+    $warningStreamHandler = new RotatingFileHandler(config('app.log_path') . 'xmj-error.log', config('app.log_max_files'), Logger::WARNING, $bubble);
+    $warningStreamHandler->setFormatter(new LineFormatter(Constant::APP_LOG_FORMAT));
+    $monolog->pushHandler($warningStreamHandler);
+});
 
 /*
 |--------------------------------------------------------------------------

@@ -5,10 +5,9 @@ namespace App\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface WeiboRepository
+ * Interface WeiboUserRepository
  * @package namespace App\Repositories;
  */
-interface WeiboRepository extends RepositoryInterface
+interface WeiboUserRepository extends RepositoryInterface
 {
-    //
 }

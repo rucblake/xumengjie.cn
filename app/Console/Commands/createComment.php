@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Services\WeiboService;
+use App\Libraries\Util\AesUtil;
+use App\Services\WeiboUserService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class createComment extends Command
 {
@@ -21,15 +23,15 @@ class createComment extends Command
      */
     protected $description = 'create a comment';
 
-    protected $weiboService;
+    protected $weiboUserService;
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(WeiboService $weiboService)
+    public function __construct(WeiboUserService $weiboUserService)
     {
-        $this->weiboService = $weiboService;
+        $this->weiboUserService = $weiboUserService;
         parent::__construct();
     }
 
@@ -40,12 +42,23 @@ class createComment extends Command
      */
     public function handle()
     {
-        $this->weiboService->checkConfig();
-        $ret = $this->weiboService->autoLogin();
-        if (!$ret) {
-            echo "create comment failed\r\n";
-        } else {
-            echo "success\r\n";
+        $users = $this->weiboUserService->getNormalUser();
+        foreach ($users as $user) {
+            try{
+                if ($user['failed_time'] > 3) {
+                    continue;
+                }
+                if (empty($user['cookie'])) {
+                    $this->weiboUserService->autoLogin($user);
+                }
+                $cookie = AesUtil::decrypt($user['cookie']);
+                $result = $this->weiboUserService->checkConfig($cookie);
+                dd($result);
+            } catch (\Exception $e) {
+                Log::warning($e->getMessage());
+                continue;
+            }
+
         }
     }
 }
