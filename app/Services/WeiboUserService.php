@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Entities\Common\Constant;
+use App\Exceptions\WeiboException;
 use App\Libraries\HttpRequest;
 use App\Libraries\Util\AesUtil;
 use App\Repositories\WeiboUserRepository;
@@ -53,12 +54,11 @@ class WeiboUserService
     public function autoLogin($user)
     {
         $loginStr = $this->getLoginStr();
-        $cookie = $this->loginByPassport($user, $loginStr);
-        if ($this->checkConfig($cookie)) {
-            $this->saveCookie($user['id'], $cookie);
-            return true;
-        }
-        return false;
+        $user['cookie'] = $this->loginByPassport($user, $loginStr);
+        $config = $this->checkConfig($user);
+        $user['uid'] = $config['data']['uid'];
+        $this->saveCookie($user);
+        return $user;
     }
 
     public function getLoginStr()
@@ -72,7 +72,7 @@ class WeiboUserService
     {
         $preg = sprintf(self::COOKIE_PREG, $name);
         if(!preg_match_all($preg, $header, $cookie)){
-            throw new \Exception("cookie $name not exist in $header", 1001);
+            throw new WeiboException("cookie $name not exist in $header", WeiboException::EMPTY_COOKIE);
         }
         $cookie = $name . '=' . $cookie[1][0];
         return $cookie;
@@ -91,39 +91,40 @@ class WeiboUserService
         $result = HttpRequest::callAll(self::WEIBO_LOGIN_URL, 'post', true, $params, $header);
         $body = json_decode($result['body'], true);
         if ($body['retcode'] != 20000000) {
-            throw new \Exception("login failed: retCode is not 20000000. call result: " .
-                json_encode($result, JSON_UNESCAPED_UNICODE), 1002);
+            throw new WeiboException("login failed: retCode is not 20000000. call result: " .
+                json_encode($result, JSON_UNESCAPED_UNICODE), WeiboException::PASSPORT_RET_ERROR);
         }
         $header = $result['header'];
         $cookie = $loginStr;
         foreach (self::COOKIE_LIST as $name) {
             $cookie .= ';' . $this->getResponseCookie($header, $name);
         }
-        return $cookie;
+        return AesUtil::encrypt($cookie);
     }
 
-    public function checkConfig($cookie)
+    public function checkConfig($user)
     {
         $header = [
-            'Cookie: ' . $cookie,
+            'Cookie: ' . AesUtil::decrypt($user['cookie']),
         ];
         $result = HttpRequest::call(self::WEIBO_CONFIG_URL, 'post', true, [], $header);
         $result =  json_decode($result, true);
         if (!$result['data']['login']) {
-            throw new \Exception("login failed: config login false. call result:" .
-                json_encode($result, JSON_UNESCAPED_UNICODE), 1003);
+            $this->loginFailed($user);
+            throw new WeiboException("login failed: config login false. call result:" .
+                json_encode($result, JSON_UNESCAPED_UNICODE), WeiboException::CONFIG_CHECK_FAILED);
         }
         return $result;
     }
 
-    public function saveCookie($id, $cookie)
+    public function saveCookie($user)
     {
-        $cookie = AesUtil::encrypt($cookie);
         $attributes = [
-            'cookie' => $cookie,
+            'uid' => $user['uid'],
+            'cookie' => $user['cookie'],
             'login_at' => date('Y-m-d H:i:s', time()),
         ];
-        $this->weiboUserRepository->update($attributes, $id);
+        $this->weiboUserRepository->update($attributes, $user['id']);
     }
 
     public function loginFailed($user)

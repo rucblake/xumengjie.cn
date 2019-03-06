@@ -30,6 +30,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\ImageRepository::class, \App\Repositories\ImageRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\WeiboRepository::class, \App\Repositories\WeiboRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\WeiboUserRepository::class, \App\Repositories\WeiboUserRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\WeiboRepository::class, \App\Repositories\WeiboRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\WeiboCommentRepository::class, \App\Repositories\WeiboCommentRepositoryEloquent::class);
         //:end-bindings:
     }
 }
