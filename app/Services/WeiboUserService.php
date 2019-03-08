@@ -38,8 +38,10 @@ class WeiboUserService
         $userInfo = [
             'username' => AesUtil::encrypt($username),
             'password' => AesUtil::encrypt($password),
-            'cookie' => AesUtil::encrypt($cookie),
         ];
+        if (!empty($cookie)) {
+            $userInfo['cookie'] = AesUtil::encrypt($cookie);
+        }
         $user = $this->weiboUserRepository->findWhere(['username' => $userInfo['username']])->first();
         if (empty($user)) {
             return $this->weiboUserRepository->create($userInfo);
