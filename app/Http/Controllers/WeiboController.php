@@ -20,9 +20,8 @@ class WeiboController extends Controller
     {
         $username = $request->input('username');
         $password = $request->input('password');
-        Log::info('test info', $request->all());
-        Log::error('test error');
-        $this->weiboUserService->register($username, $password);
+        $cookie = $request->input('cookie');
+        $this->weiboUserService->register($username, $password, $cookie);
         return $this->response(true);
     }
 }

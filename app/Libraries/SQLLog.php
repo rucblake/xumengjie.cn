@@ -25,7 +25,7 @@ class SQLLog
         if (!self::$logger) {
             self::$logger = new Logger('sql');
             $handler = new RotatingFileHandler(config('app.log_path') . 'sql.log',
-                config('app.log_max_files'), Logger::INFO, false);
+                config('app.log_max_files'), Logger::INFO, false, 0777);
             self::$logger->pushHandler($handler);
         }
         return self::$logger;

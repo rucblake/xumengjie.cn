@@ -33,11 +33,12 @@ class WeiboUserService
         $this->weiboUserRepository = $weiboUserRepository;
     }
 
-    public function register($username, $password)
+    public function register($username, $password, $cookie)
     {
         $userInfo = [
             'username' => AesUtil::encrypt($username),
             'password' => AesUtil::encrypt($password),
+            'cookie' => AesUtil::encrypt($cookie),
         ];
         $user = $this->weiboUserRepository->findWhere(['username' => $userInfo['username']])->first();
         if (empty($user)) {
