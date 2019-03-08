@@ -67,7 +67,7 @@ class createComment extends Command
                     'uid' => $user['uid'],
                     'mid' => $weibo['mid'],
                     'content' => CommentsUtil::randomComment() . self::POSTFIX,
-                    'forward' => 0,
+                    'forward' => $user['id'] === 1 ? 0 : 1,
                     'isroot' => 0,
                     'location' => 'page_100505_home',
                     'module' => 'module',

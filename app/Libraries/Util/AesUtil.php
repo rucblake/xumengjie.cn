@@ -11,9 +11,7 @@ class AesUtil
         if (empty(self::$key)) {
             self::$key = env('AES_KEY');
         }
-        $data = openssl_encrypt($input, 'AES-128-ECB', self::$key, OPENSSL_RAW_DATA);
-        $data = base64_encode($data);
-        return $data;
+        return self::encryptByKey($input, self::$key);
     }
 
     public static function decrypt($input)
@@ -21,7 +19,16 @@ class AesUtil
         if (empty(self::$key)) {
             self::$key = env('AES_KEY');
         }
-        $decrypted = openssl_decrypt(base64_decode($input), 'AES-128-ECB', self::$key, OPENSSL_RAW_DATA);
-        return $decrypted;
+        return self::decryptByKey($input, self::$key);
+    }
+
+    public static function encryptByKey($input, $key)
+    {
+        return base64_encode(openssl_encrypt($input, 'AES-128-ECB', $key, OPENSSL_RAW_DATA));
+    }
+
+    public static function decryptByKey($input, $key)
+    {
+        return openssl_decrypt(base64_decode($input), 'AES-128-ECB', $key, OPENSSL_RAW_DATA);
     }
 }
