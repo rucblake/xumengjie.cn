@@ -29,8 +29,11 @@ class WeiboService
         $this->weiboRepository = $weiboRepository;
     }
 
-    public function getRainbowWeibo()
+    public function getRainbowWeibo($id = null)
     {
+        if (!empty($id)) {
+            return $this->weiboRepository->find($id);
+        }
         return $this->weiboRepository->getFirstWeibo(self::RAINBOW_UID);
     }
 

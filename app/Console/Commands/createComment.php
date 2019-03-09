@@ -17,7 +17,7 @@ class createComment extends Command
      *
      * @var string
      */
-    protected $signature = 'createComment';
+    protected $signature = 'createComment {uid?} {mid?}';
 
     /**
      * The console command description.
@@ -49,9 +49,11 @@ class createComment extends Command
      */
     public function handle()
     {
+        $uid = $this->argument('uid', null);
+        $mid = $this->argument('mid', null);
         $total = [];
-        $users = $this->weiboUserService->getNormalUser();
-        $weibo = $this->weiboService->getRainbowWeibo();
+        $users = $this->weiboUserService->getNormalUser($uid);
+        $weibo = $this->weiboService->getRainbowWeibo($mid);
         foreach ($users as $user) {
             $total[$user['id']] = 0;
             try {

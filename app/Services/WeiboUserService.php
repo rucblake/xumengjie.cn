@@ -49,8 +49,11 @@ class WeiboUserService
         return $this->weiboUserRepository->update($userInfo, $user['id']);
     }
 
-    public function getNormalUser()
+    public function getNormalUser($id = null)
     {
+        if (!empty($id)) {
+            return $this->weiboUserRepository->findWhere(['id' => $id]);
+        }
         return $this->weiboUserRepository->findWhere(['status' => Constant::VALID_STATUS]);
     }
 
