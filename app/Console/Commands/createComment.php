@@ -51,7 +51,11 @@ class createComment extends Command
     {
         $uid = $this->argument('uid', null);
         $mid = $this->argument('mid', null);
-        $total = [];
+        $result = [
+            'success' => 0,
+            'failed' => 0,
+            'failedIds' => [],
+        ];
         $users = $this->weiboUserService->getNormalUser($uid);
         $weibo = $this->weiboService->getRainbowWeibo($mid);
         foreach ($users as $user) {
@@ -76,13 +80,15 @@ class createComment extends Command
                     'tranandcomm' => 1,
                 ];
                 $this->weiboCommentService->createComment($user, $comment);
-                $total[$user['id']] ++;
+                $result['success'] ++;
             } catch (\Exception $e) {
                 Log::warning($e->getMessage());
+                $result['failed'] ++;
+                $result['failedIds'][] = $user['id'];
                 continue;
             }
         }
-        echo sprintf("time: %s, result: %s \r\n", date('Y-m-d H:i:s', time()), json_encode($total));
+        echo sprintf("time: %s, result: %s \r\n", date('Y-m-d H:i:s', time()), json_encode($result));
         exit;
     }
 }
