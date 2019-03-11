@@ -55,7 +55,7 @@ $('#submit').click(function () {
         data: formData,
         dataType: 'json',
         success: function (result) {
-            alert(result);
+            alert('登记成功，相同用户名多次登记会覆盖之前的记录。');
         },
         error: function () {
             alert('网络异常');
