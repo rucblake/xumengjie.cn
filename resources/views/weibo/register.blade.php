@@ -26,7 +26,7 @@
         <div class="col-md-12 column">
             <form role="form">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">用户名</label><input type="text" class="form-control" id="username" />
+                    <label for="exampleInputEmail1">账号（登录邮箱或手机号）</label><input type="text" class="form-control" id="username" />
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">密码</label><input type="password" class="form-control" id="password" />
@@ -55,7 +55,7 @@ $('#submit').click(function () {
         data: formData,
         dataType: 'json',
         success: function (result) {
-            alert('登记成功，相同用户名多次登记会覆盖之前的记录。');
+            alert('录入成功，请记得关闭双重登陆验证');
         },
         error: function () {
             alert('网络异常');

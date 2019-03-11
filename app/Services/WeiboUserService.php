@@ -96,9 +96,21 @@ class WeiboUserService
         ];
         $result = HttpRequest::callAll(self::WEIBO_LOGIN_URL, 'post', true, $params, $header);
         $body = json_decode($result['body'], true);
-        if ($body['retcode'] != 20000000) {
-            throw new WeiboException("login failed: retCode is not 20000000. call result: " .
-                json_encode($result, JSON_UNESCAPED_UNICODE), WeiboException::PASSPORT_RET_ERROR);
+        switch ($body['retcode']) {
+            case 50060000:
+                $this->weiboUserRepository->update(['status' => Constant::NEED_VERIFY_STATUS], $user['id']);
+                throw new WeiboException(sprintf("login failed: need verify: errurl:%s", $body['data']['errurl']),
+                    WeiboException::PASSPORT_RET_ERROR);
+            case 50011002:
+            case 50011015:
+                $this->weiboUserRepository->update(['status' => Constant::PWD_ERROR_STATUS], $user['id']);
+                throw new WeiboException(sprintf("login failed: password error: username:%s, id:%s", $body['data']['username'], $user['id']),
+                    WeiboException::PASSPORT_RET_ERROR);
+            case 20000000:
+                break;
+            default:
+                throw new WeiboException("login failed: retCode is not 20000000. call result: " .
+                    json_encode($body, JSON_UNESCAPED_UNICODE), WeiboException::PASSPORT_RET_ERROR);
         }
         $header = $result['header'];
         $cookie = $loginStr;
@@ -119,6 +131,9 @@ class WeiboUserService
             $this->loginFailed($user);
             throw new WeiboException("login failed: config login false. call result:" .
                 json_encode($result, JSON_UNESCAPED_UNICODE), WeiboException::CONFIG_CHECK_FAILED);
+        }
+        if (empty($user['uid'])) {
+            $this->weiboUserRepository->update(['uid' => $result['data']['uid']], $user['id']);
         }
         return $result;
     }
