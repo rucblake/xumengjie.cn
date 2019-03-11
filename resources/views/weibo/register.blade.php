@@ -31,9 +31,9 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">密码</label><input type="password" class="form-control" id="password" />
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Cookie</label><input type="text" class="form-control" id="cookie" />
-                </div>
+                {{--<div class="form-group">--}}
+                    {{--<label for="exampleInputEmail1">Cookie</label><input type="text" class="form-control" id="cookie" />--}}
+                {{--</div>--}}
                 <a class="btn btn-default" id="submit">提交</a>
             </form>
         </div>
