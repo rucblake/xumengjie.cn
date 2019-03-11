@@ -40,6 +40,7 @@ class WeiboService
     public function updateRainbowWeibo()
     {
         $mids = $this->weiboRepository->getMidsByUid(self::RAINBOW_UID) ?? [];
+        $hasNew = false;
         try {
             $params = [
                 'type' => 'uid',
@@ -63,15 +64,17 @@ class WeiboService
                     'mid' => $card['mblog']['mid'],
                     'uid' => self::RAINBOW_UID,
                     'content' => $card['mblog']['text'],
-                    'release_at' => date('Y-', time()) . $card['mblog']['created_at'],
+                    'release_at' => date('Y-m-d', time()),
                     'weibo_url' => $card['scheme'],
                 ];
                 $this->weiboRepository->create($weibo);
+                $hasNew = true;
             }
         } catch (\Exception $e) {
             $errMsg = 'failed get rainbow weibo: ' . $e->getMessage();
             Log::warning($errMsg);
             throw new WeiboException($errMsg, WeiboException::WEIBO_GET_ERROR);
         }
+        return $hasNew;
     }
 }

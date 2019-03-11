@@ -36,7 +36,10 @@ class updateRainbowWeibo extends Command
      */
     public function handle()
     {
-        $this->weiboService->updateRainbowWeibo();
+        $hasNew = $this->weiboService->updateRainbowWeibo();
+        if ($hasNew) {
+            $this->call('createComment');
+        }
         exit;
     }
 }

@@ -52,9 +52,9 @@ class createComment extends Command
         $uid = $this->argument('uid', null);
         $mid = $this->argument('mid', null);
         $result = [
-            'success' => 0,
-            'failed' => 0,
-            'failedIds' => [],
+            'succeedNum' => 0,
+            'failedNum' => 0,
+            'failedReason' => [],
         ];
         $users = $this->weiboUserService->getNormalUser($uid);
         $weibo = $this->weiboService->getRainbowWeibo($mid);
@@ -80,11 +80,11 @@ class createComment extends Command
                     'tranandcomm' => 1,
                 ];
                 $this->weiboCommentService->createComment($user, $comment);
-                $result['success'] ++;
+                $result['succeedNum'] ++;
             } catch (\Exception $e) {
                 Log::warning($e->getMessage());
-                $result['failed'] ++;
-                $result['failedIds'][] = $user['id'];
+                $result['failedNum'] ++;
+                $result['failedReason'][$user['id']] = $e->getCode();
                 continue;
             }
         }

@@ -100,12 +100,12 @@ class WeiboUserService
             case 50060000:
                 $this->weiboUserRepository->update(['status' => Constant::NEED_VERIFY_STATUS], $user['id']);
                 throw new WeiboException(sprintf("login failed: need verify: errurl:%s", $body['data']['errurl']),
-                    WeiboException::PASSPORT_RET_ERROR);
+                    WeiboException::PASSPORT_NEED_VERIFY);
             case 50011002:
             case 50011015:
                 $this->weiboUserRepository->update(['status' => Constant::PWD_ERROR_STATUS], $user['id']);
                 throw new WeiboException(sprintf("login failed: password error: username:%s, id:%s", $body['data']['username'], $user['id']),
-                    WeiboException::PASSPORT_RET_ERROR);
+                    WeiboException::PASSPORT_PWD_ERROR);
             case 20000000:
                 break;
             default:
