@@ -40,12 +40,21 @@ class WeiboCommentService
         $url = self::CREATE_COMMENT_API . time();
         $retJson = HttpRequest::call($url, 'post', true, $comment, $header);
         if (empty($retJson)) {
-            $this->weiboUserRepository->update(['status' => Constant::USER_FORBIDDEN], $user['id']);
-            throw new WeiboException("comment create failed. user forbidden:" . $retJson, WeiboException::PASSPORT_FORBIDDEN);
+            if ($user['failed_time'] > 3) {
+                $this->weiboUserRepository->update(['status' => Constant::USER_FORBIDDEN], $user['id']);
+                throw new WeiboException("comment create failed. user forbidden", WeiboException::PASSPORT_FORBIDDEN);
+            }
+            $this->weiboUserRepository->update(['failed_time' => $user['failed_time'] + 1], $user['id']);
+            throw new WeiboException("comment create failed. request failed", WeiboException::REQUEST_FAILED);
         }
         $result =  json_decode($retJson, true);
-        if ($result['code'] != 100000) {
-            throw new WeiboException("comment create failed. call result:" . $retJson, WeiboException::COMMENT_CREATE_FAILED);
+        switch ($result['code']) {
+            case 100000:
+                break;
+            case 100001:
+                throw new WeiboException("comment create failed. create too fast", WeiboException::CREATE_TOO_FAST);
+            default:
+                throw new WeiboException("comment create failed. call result:" . $retJson, WeiboException::COMMENT_CREATE_FAILED);
         }
         $record = [
             'weibo_user_id' => $user['id'],

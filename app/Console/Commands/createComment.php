@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Exceptions\WeiboException;
 use App\Libraries\Util\AesUtil;
 use App\Libraries\Util\CommentsUtil;
 use App\Services\WeiboCommentService;
@@ -84,7 +85,7 @@ class createComment extends Command
             } catch (\Exception $e) {
                 Log::warning($e->getMessage());
                 $result['failedNum'] ++;
-                $result['failedReason'][$user['id']] = $e->getCode();
+                $result['failedReason'][$user['id']] = WeiboException::ERROR_MAP[$e->getCode()];
                 continue;
             }
         }
