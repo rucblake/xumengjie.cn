@@ -50,6 +50,7 @@ class createComment extends Command
      */
     public function handle()
     {
+        $start = date('Y-m-d H:i:s', time());
         $uid = $this->argument('uid', null);
         $mid = $this->argument('mid', null);
         $result = [
@@ -90,8 +91,8 @@ class createComment extends Command
                 continue;
             }
         }
-        echo sprintf("time: %s, result: %s \r\n", date('Y-m-d H:i:s', time()),
-            json_encode($result, JSON_UNESCAPED_UNICODE));
+        $end = date('Y-m-d H:i:s', time());
+        echo sprintf("start: %s, end: %s, result: %s \r\n", $start, $end, json_encode($result, JSON_UNESCAPED_UNICODE));
         exit;
     }
 }
