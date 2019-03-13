@@ -82,7 +82,7 @@ class createComment extends Command
                 ];
                 $this->weiboCommentService->createComment($user, $comment);
                 $result['succeedNum'] ++;
-                sleep(floor(200 / count($users)));
+                sleep(floor(240 / count($users)));
             } catch (\Exception $e) {
                 Log::warning($e->getMessage());
                 $result['failedNum'] ++;
