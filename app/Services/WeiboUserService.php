@@ -19,7 +19,7 @@ class WeiboUserService
     const DEFAULT_LOGIN_PARAMS = [
         'entry' => 'mweibo',
         'res' => 'wel',
-        'r' => 'https://m.weibo.cn/'
+        'r' => 'https://m.weibo.cn/api/config'
     ];
 
     const COOKIE_PREG = '/Set-Cookie: %s=(.*?);/m';

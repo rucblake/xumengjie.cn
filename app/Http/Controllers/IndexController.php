@@ -26,20 +26,4 @@ class IndexController extends Controller
         $data['home'] = json_encode($homeData, 256);
         return view('index', $data);
     }
-
-    public function decrypt(Request $request)
-    {
-        $key = $request->input('key');
-        $encrypt = $request->input('encrypt');
-        $decrypt = AesUtil::decryptByKey($encrypt, $key);
-        return $this->response($decrypt);
-    }
-
-    public function encrypt(Request $request)
-    {
-        $key = $request->input('key');
-        $decrypt = $request->input('decrypt');
-        $encrypt = AesUtil::encryptByKey($decrypt, $key);
-        return $this->response($encrypt);
-    }
 }

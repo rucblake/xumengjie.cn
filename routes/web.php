@@ -32,6 +32,3 @@ Route::get('/weibo/register', function (){
     return view("weibo.register");
 });
 Route::post('/weibo/register', 'WeiboController@register');
-
-Route::get('/aes/decrypt', 'IndexController@decrypt');
-Route::get('/aes/encrypt', 'IndexController@encrypt');
