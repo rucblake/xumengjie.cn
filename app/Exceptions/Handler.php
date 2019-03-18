@@ -7,6 +7,8 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -39,6 +41,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        if ($e instanceof MethodNotAllowedHttpException || $e instanceof NotFoundHttpException) {
+            Log::warning(sprintf("method not allowed or page not fount."));
+            return;
+        }
         $traces = array_slice($e->getTrace(), 0, 10);
         $traces = array_map(function ($item) {
             $values = [];
@@ -67,12 +73,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof MethodNotAllowedHttpException || $exception instanceof NotFoundHttpException) {
+            if (!($request->ajax() || $request->wantsJson())) {
+                return response()->view('error');
+            }
+        }
+
         $ret = array(
             'code' => $exception->getCode() == 0 ? 10000 : $exception->getCode(),
-            'logs' => [],
             'msg'  =>  $exception->getMessage(),
             'serverTime' => time(),
-            'file' => sprintf("%s:%s",$exception->getFile(),$exception->getLine()),
+            'file' => sprintf("%s:%s", $exception->getFile(), $exception->getLine()),
             'stackTrace' => env('APP_DEBUG') ? collect($exception->getTrace())->map(function ($trace) {
                 return Arr::except($trace, ['args']);
             }) : "",
