@@ -92,7 +92,8 @@ class createComment extends Command
             }
         }
         $end = date('Y-m-d H:i:s', time());
-        echo sprintf("start: %s, end: %s, result: %s \r\n", $start, $end, json_encode($result, JSON_UNESCAPED_UNICODE));
+        echo $log = sprintf("start: %s, end: %s, result: %s \r\n", $start, $end, json_encode($result, JSON_UNESCAPED_UNICODE));
+        Log::info($log);
         exit;
     }
 }
