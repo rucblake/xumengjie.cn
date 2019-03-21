@@ -31,7 +31,7 @@ class createComment extends Command
     protected $weiboUserService;
     protected $weiboCommentService;
 
-    const POSTFIX = '@火箭少女101_徐梦洁 ——来自最爱你的彩蛋';
+    const POSTFIX = '@火箭少女101_徐梦洁';
 
     public function __construct(WeiboService $weiboService,
                                 WeiboUserService $weiboUserService,
@@ -83,7 +83,7 @@ class createComment extends Command
                 ];
                 $this->weiboCommentService->createComment($user, $comment);
                 $result['succeedNum'] ++;
-                sleep(floor(240 / count($users)));
+               sleep(floor(240 / count($users)));
             } catch (\Exception $e) {
                 Log::warning($e->getMessage());
                 $result['failedNum'] ++;
