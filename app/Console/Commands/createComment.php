@@ -31,7 +31,7 @@ class createComment extends Command
     protected $weiboUserService;
     protected $weiboCommentService;
 
-    const POSTFIX = '@火箭少女101_徐梦洁#徐梦洁雏菊挚爱香氛中国区推广大使#';
+    const POSTFIX = '@火箭少女101_徐梦洁#徐梦洁雏菊挚爱香氛中国区推广大使##挚爱雏菊#';
 
     public function __construct(WeiboService $weiboService,
                                 WeiboUserService $weiboUserService,
