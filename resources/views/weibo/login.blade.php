@@ -33,14 +33,16 @@
     <ul>
         <li>一台电脑</li>
         <p>手机浏览器无法查看cookie</p>
-        <li>chrome浏览器</li>
-        <p>官网下载需要翻墙，建议前往腾讯软件中心下载windows版本：<a href="https://pc.qq.com/detail/1/detail_2661.html" target="_blank">下载链接</a>，Mac可以在应用商店中找到</p>
+        <li>chrome浏览器或火狐浏览器</li>
+        <p>官网下载chrome需要翻墙，建议前往腾讯软件中心下载windows版本：<a href="https://pc.qq.com/detail/1/detail_2661.html" target="_blank">下载链接</a></p>
+        <p>火狐浏览器无需翻墙，<a href="http://www.firefox.com.cn/" target="_blank">点此下载</a></p>
     </ul>
+    <h3>下面以chrome为例介绍过程，火狐的区别在最后。</h3>
     <h3>第一步</h3>
     <li><a href="https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=https%3A%2F%2Fm.weibo.cn%2F" target="_blank">点击这里</a>前往微博登录，登录完就可以回来了</li>
     <h3>第二步</h3>
     <li><a href="https://weibo.cn" target="_blank">点击这里</a>前往微博网页版（这个网页一定要用电脑打开）</li>
-    <li>按下F12进入chrome浏览器的开发者模式，进入类似下图的样子</li>
+    <li>按下F12进入浏览器的开发者模式，进入类似下图的样子</li>
     <div class="help-img">
         <img src="http://s1.xumengjie.cn:8031/pc/weibo/1.png"/>
     </div>
@@ -58,8 +60,15 @@
     </div>
     <li>至此，手动获取登录信息完成</li>
     <h3>第三步</h3>
-    <li>将复制的cookie粘贴到上面的输入框里，提交即可。<a id="toTop" href="#top">点击此处</a>可以快速回到顶部</li>
+    <li>将复制的cookie粘贴到上面的输入框里，提交即可。<a class="toTop" href="#top">点击此处</a>可以快速回到顶部</li>
     <li>cookie将加密存储到数据库中，除评论彩虹微博外不做他用。</li>
+    <hr>
+    <h3>火狐浏览器的区别</h3>
+    <li>火狐浏览器会将请求头缩略显示，cookie显示不全，需要点击原始头才能完全显示，如下图所示：</li>
+    <div class="help-img">
+        <img src="http://s1.xumengjie.cn:8031/pc/weibo/5.png" style="max-width: 1600px"/>
+    </div>
+    <li><a class="toTop" href="#top">点击此处</a>可以直接回到顶部</li>
 </div>
 <br>
 <p class="text-center"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
@@ -88,7 +97,7 @@
             }
         });
     });
-    $('#toTop').click(function () {
+    $('.toTop').click(function () {
         $('html').scroll(0);
     });
 </script>
