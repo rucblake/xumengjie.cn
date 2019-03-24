@@ -63,9 +63,6 @@ class createComment extends Command
         foreach ($users as $user) {
             $total[$user['id']] = 0;
             try {
-                if ($user['failed_time'] > 3) {
-                    continue;
-                }
                 if (empty($user['cookie'])) {
                     $user = $this->weiboUserService->autoLogin($user);
                 }
@@ -83,7 +80,7 @@ class createComment extends Command
                 ];
                 $this->weiboCommentService->createComment($user, $comment);
                 $result['succeedNum'] ++;
-               sleep(floor(240 / count($users)));
+                sleep(floor(240 / count($users)));
             } catch (\Exception $e) {
                 Log::warning($e->getMessage());
                 $result['failedNum'] ++;

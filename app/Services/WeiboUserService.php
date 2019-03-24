@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Entities\Common\Constant;
+use App\Entities\WeiboUser;
 use App\Exceptions\WeiboException;
 use App\Libraries\HttpRequest;
 use App\Libraries\Util\AesUtil;
@@ -15,6 +16,7 @@ class WeiboUserService
     const WEIBO_PASSPORT_URL = 'https://passport.weibo.cn/signin/login';
     const WEIBO_LOGIN_URL = 'https://passport.weibo.cn/sso/login';
     const WEIBO_CONFIG_URL = 'https://m.weibo.cn/api/config';
+    const WEIBO_USER_INFO_URL = 'https://m.weibo.cn/profile/info';
 
     const DEFAULT_LOGIN_PARAMS = [
         'entry' => 'mweibo',
@@ -25,6 +27,8 @@ class WeiboUserService
     const COOKIE_PREG = '/Set-Cookie: %s=(.*?);/m';
 
     const COOKIE_LIST = ['SUB', 'SUHB', 'SSOLoginState'];
+
+    const LOGIN_SUCCEED = '用户：%s，登录成功';
 
     protected $weiboUserRepository;
 
@@ -47,6 +51,34 @@ class WeiboUserService
             return $this->weiboUserRepository->create($userInfo);
         }
         return $this->weiboUserRepository->update($userInfo, $user['id']);
+    }
+
+    public function login($cookie)
+    {
+        try {
+            $user = [
+                'cookie' => AesUtil::encrypt($cookie),
+                'status' => WeiboUser::USER_STATUS_VALID,
+                'login_at' => date('Y-m-d H:i:s', time()),
+            ];
+            $config = $this->checkConfig($user);
+            $uid = $config['data']['uid'];
+            $store = $this->weiboUserRepository->findWhere(['uid' => $uid])->first();
+            if (empty($store)) {
+                $info = $this->getUserInfo($uid);
+                $user['uid'] = $uid;
+                $user['nickname'] = $info['data']['user']['screen_name'];
+                $store = $this->weiboUserRepository->create($user);
+            } else {
+                if ($store['status'] == WeiboUser::USER_STATUS_VALID) {
+                    return $store;
+                }
+                $this->weiboUserRepository->update($user, $store['id']);
+            }
+            return $store;
+        } catch (\Exception $e) {
+            throw new WeiboException("cookie登录失败", WeiboException::CONFIG_CHECK_FAILED);
+        }
     }
 
     public function getNormalUser($id = null)
@@ -128,12 +160,16 @@ class WeiboUserService
         $result = HttpRequest::call(self::WEIBO_CONFIG_URL, 'post', true, [], $header);
         $result =  json_decode($result, true);
         if (!$result['data']['login']) {
-            $this->loginFailed($user);
+            if (!empty($user['id'])) {
+                $update = [
+                    'status' => WeiboUser::USER_STATUS_VERIFY,
+                    'login_at' => '',
+                    'cookie' => '',
+                ];
+                $this->weiboUserRepository->update($update, $user['id']);
+            }
             throw new WeiboException("login failed: config login false. call result:" .
                 json_encode($result, JSON_UNESCAPED_UNICODE), WeiboException::CONFIG_CHECK_FAILED);
-        }
-        if (empty($user['uid'])) {
-            $this->weiboUserRepository->update(['uid' => $result['data']['uid']], $user['id']);
         }
         return $result;
     }
@@ -148,13 +184,25 @@ class WeiboUserService
         $this->weiboUserRepository->update($attributes, $user['id']);
     }
 
-    public function loginFailed($user)
+    public function syncCommentCount()
     {
-        $attributes = [
-            'cookie' => '',
-            'login_at' => '',
-            'failed_time' => $user['failed_time'] + 1,
+        $commentCount = $this->weiboUserRepository->getCommentCount();
+        foreach ($commentCount as $user) {
+            $user['comment_count'] = $user['weibo_comments_count'];
+            unset($user['weibo_comments_count']);
+            $this->weiboUserRepository->update($user, $user['id']);
+        }
+    }
+
+    public function getUserInfo($uid)
+    {
+        $params = [
+            'uid' => $uid,
         ];
-        $this->weiboUserRepository->update($attributes, $user['id']);
+        $result = HttpRequest::call(self::WEIBO_USER_INFO_URL, 'get', true, $params);
+        if (empty($result)) {
+            throw new WeiboException('request failed', WeiboException::REQUEST_FAILED);
+        }
+        return json_decode($result, true);
     }
 }

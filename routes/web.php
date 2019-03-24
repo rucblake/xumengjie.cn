@@ -29,6 +29,13 @@ Route::post('/image/list', 'ImageController@list');
 Route::post('/video/list', 'VideoController@list');
 
 Route::get('/weibo/register', function (){
-    return view("weibo.register");
+    return redirect('/weibo/login');
+//    return view("weibo.register");
 });
-Route::post('/weibo/register', 'WeiboController@register');
+//Route::post('/weibo/register', 'WeiboController@register');
+
+Route::get('/weibo', 'WeiboController@index');
+Route::get('/weibo/login', function (){
+    return view("weibo.login");
+});
+Route::post('/weibo/login', 'WeiboController@login');

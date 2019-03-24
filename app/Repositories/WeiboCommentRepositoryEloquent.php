@@ -33,4 +33,9 @@ class WeiboCommentRepositoryEloquent extends BaseRepository implements WeiboComm
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function getCount()
+    {
+        return $this->model->count();
+    }
 }

@@ -9,14 +9,19 @@
 namespace App\Services;
 
 
+use App\Entities\WeiboUser;
 use App\Exceptions\WeiboException;
 use App\Libraries\HttpRequest;
+use App\Repositories\WeiboCommentRepository;
 use App\Repositories\WeiboRepository;
+use App\Repositories\WeiboUserRepository;
 use Illuminate\Support\Facades\Log;
 
 class WeiboService
 {
     protected $weiboRepository;
+    protected $weiboUserRepository;
+    protected $weiboCommentRepository;
 
     const WEIBO_GET_INDEX_API = 'https://m.weibo.cn/api/container/getIndex';
 
@@ -24,11 +29,36 @@ class WeiboService
 
     const RAINBOW_CONTAINER_ID = 1076035873220619;
 
-    public function __construct(WeiboRepository $weiboRepository)
+    public function __construct(WeiboRepository $weiboRepository,
+                                WeiboUserRepository $weiboUserRepository,
+                                WeiboCommentRepository $weiboCommentRepository)
     {
         $this->weiboRepository = $weiboRepository;
+        $this->weiboUserRepository = $weiboUserRepository;
+        $this->weiboCommentRepository = $weiboCommentRepository;
     }
 
+    public function getUsersData()
+    {
+        $users = $this->weiboUserRepository->all()->toArray();
+        return $this->_buildUserData($users);
+    }
+
+    public function _buildUserData(array $users = [])
+    {
+        $ret = [];
+        foreach ($users as $user) {
+            $ret[] = [
+                'id' => $user['id'],
+                'uid' => $user['uid'],
+                'nickname' => $user['nickname'],
+                'comment_count' => $user['comment_count'],
+                'status' => WeiboUser::USER_STATUS_MAP[$user['status']],
+                'login_at' => $user['login_at'],
+            ];
+        }
+        return $ret;
+    }
     public function getRainbowWeibo($id = null)
     {
         if (!empty($id)) {

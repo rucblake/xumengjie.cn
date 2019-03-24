@@ -34,3 +34,14 @@
 .contact-info {
     margin: 20px 0;
 }
+
+.help-img {
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.help-img img {
+    width: 80%;
+    max-width: 600px;
+}

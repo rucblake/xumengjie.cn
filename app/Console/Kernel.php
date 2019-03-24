@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\createComment;
+use App\Console\Commands\syncCommentCount;
 use App\Console\Commands\updateRainbowWeibo;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         createComment::class,
         updateRainbowWeibo::class,
+        syncCommentCount::class,
     ];
 
     /**

@@ -34,4 +34,8 @@ class WeiboUserRepositoryEloquent extends BaseRepository implements WeiboUserRep
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function getCommentCount()
+    {
+        return $this->model->withCount('weiboComments')->get()->toArray();
+    }
 }

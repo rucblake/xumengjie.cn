@@ -64,4 +64,9 @@ class WeiboCommentService
         $this->weiboCommentRepository->create($record);
         return $retJson;
     }
+
+    public function getCommentCount()
+    {
+        return $this->weiboCommentRepository->getCount();
+    }
 }

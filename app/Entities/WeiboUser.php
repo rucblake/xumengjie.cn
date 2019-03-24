@@ -12,4 +12,25 @@ class WeiboUser extends Model implements Transformable
 
     protected $guarded = ['id', 'create_at', 'update_at'];
 
+    const USER_STATUS_CLOSE = 0;
+    const USER_STATUS_VALID = 1;
+    const USER_STATUS_PASSWORD_ERROR = 2;
+    const USER_STATUS_VERIFY = 3;
+    const USER_STATUS_FORBIDDEN = 4;
+    const USER_STATUS_PROTECTED = 5;
+
+    const USER_STATUS_MAP = [
+        self::USER_STATUS_CLOSE => '未启用',
+        self::USER_STATUS_VALID => '正常',
+        self::USER_STATUS_PASSWORD_ERROR => '密码错误',
+        self::USER_STATUS_VERIFY => '需要手动登陆',
+        self::USER_STATUS_FORBIDDEN => '账户封禁',
+        self::USER_STATUS_PROTECTED => '账户登陆保护',
+    ];
+
+    public function weiboComments()
+    {
+        return $this->hasMany(WeiboComment::class, 'weibo_user_id', 'id');
+    }
+
 }
