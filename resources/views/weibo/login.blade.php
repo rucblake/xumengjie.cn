@@ -15,7 +15,7 @@
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4>提示</h4>
-        <strong>建议使用PC端chrome浏览器，首次使用请查看下方教程</strong>
+        <strong>建议使用PC端chrome浏览器，首次使用请查看下方教程，微博看板<a href="/weibo" target="_blank">点此查看</a></strong>
     </div>
     <div class="row clearfix">
         <div class="col-md-12 column">

@@ -42,6 +42,7 @@ class WeiboUserRepositoryEloquent extends BaseRepository implements WeiboUserRep
 
     public function clearFailures()
     {
-        return $this->model->where('failed_time', '>', 0)->update(['failed_time' => 0]);
+        return $this->model->where(['status' => WeiboUser::USER_STATUS_MUCH_FAILURES])
+            ->update(['failed_time' => 0, 'status' => WeiboUser::USER_STATUS_VALID]);
     }
 }

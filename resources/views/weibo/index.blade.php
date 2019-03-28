@@ -51,11 +51,11 @@
     <ul>
         <li>累计评论数每半小时更新一次</li>
         <li>只有状态正常时会正常评论</li>
-        <li>密码错误、未启用状态均可通过手动登陆解决</li>
+        <li>当日累计失败达到10次将会暂时关闭评论功能，隔日恢复</li>
         <li>手动登录请<a href="/weibo/login" target="_blank">点击此处</a></li>
-        <li>账户封禁和账户登录保护请登录微博APP解决</li>
+        <li>账户冻结和账户登录保护请登录微博APP解决</li>
         <li>网页版微博的登录状态容易失效，记得隔几天检查一次。本页编号是不会变的，记住自己的编号能够更快找到。</li>
-        <li>本页链接：<a href="/weibo">xumengjie.cn/weibo</a> 简单易记</li>
+        <li>收藏本页链接方便查看：<a href="/weibo">xumengjie.cn/weibo</a></li>
     </ul>
 </div>
 <p class="text-center"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
