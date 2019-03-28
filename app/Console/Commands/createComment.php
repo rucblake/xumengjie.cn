@@ -18,7 +18,7 @@ class createComment extends Command
      *
      * @var string
      */
-    protected $signature = 'createComment {uid?} {mid?}';
+    protected $signature = 'weibo:create {uid?} {mid?}';
 
     /**
      * The console command description.

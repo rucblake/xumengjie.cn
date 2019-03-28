@@ -5,21 +5,21 @@ namespace App\Console\Commands;
 use App\Services\WeiboUserService;
 use Illuminate\Console\Command;
 
-class syncCommentCount extends Command
+class clearFailures extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'weibo:sync';
+    protected $signature = 'weibo:clear';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'sync comment count';
+    protected $description = 'clear failures';
 
     protected $weiboUserService;
 
@@ -36,7 +36,7 @@ class syncCommentCount extends Command
      */
     public function handle()
     {
-        $this->weiboUserService->syncCommentCount();
+        $this->weiboUserService->clearFailures();
         exit;
     }
 }

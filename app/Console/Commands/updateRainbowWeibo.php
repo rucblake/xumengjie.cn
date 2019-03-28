@@ -12,14 +12,14 @@ class updateRainbowWeibo extends Command
      *
      * @var string
      */
-    protected $signature = 'updateRainbowWeibo';
+    protected $signature = 'weibo:update';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'update rainbow weibo';
 
     protected $weiboService;
 
@@ -37,9 +37,9 @@ class updateRainbowWeibo extends Command
     public function handle()
     {
         $hasNew = $this->weiboService->updateRainbowWeibo();
-//        if ($hasNew) {
-//            $this->call('createComment');
-//        }
+        if ($hasNew) {
+            $this->call('weibo:create 1 0');
+        }
         exit;
     }
 }

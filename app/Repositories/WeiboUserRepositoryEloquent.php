@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\WeiboUserRepository;
@@ -37,5 +38,10 @@ class WeiboUserRepositoryEloquent extends BaseRepository implements WeiboUserRep
     public function getCommentCount()
     {
         return $this->model->withCount('weiboComments')->get()->toArray();
+    }
+
+    public function clearFailures()
+    {
+        return $this->model->where('failed_time', '>', 0)->update(['failed_time' => 0]);
     }
 }

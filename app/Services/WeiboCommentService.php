@@ -42,8 +42,8 @@ class WeiboCommentService
         $retJson = HttpRequest::call($url, 'post', true, $comment, $header);
         if (empty($retJson)) {
             if ($user['failed_time'] > 10) {
-                $this->weiboUserRepository->update(['status' => WeiboUser::USER_STATUS_FORBIDDEN], $user['id']);
-                throw new WeiboException("comment create failed. user forbidden", WeiboException::PASSPORT_FORBIDDEN);
+                $this->weiboUserRepository->update(['status' => WeiboUser::USER_STATUS_MUCH_FAILURES], $user['id']);
+                throw new WeiboException("comment create failed. too much failures", WeiboException::PASSPORT_FORBIDDEN);
             }
             $this->weiboUserRepository->update(['failed_time' => $user['failed_time'] + 1], $user['id']);
             throw new WeiboException("comment create failed. request failed", WeiboException::REQUEST_FAILED);

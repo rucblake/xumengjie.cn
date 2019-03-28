@@ -11,4 +11,6 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface WeiboUserRepository extends RepositoryInterface
 {
     public function getCommentCount();
+
+    public function clearFailures();
 }

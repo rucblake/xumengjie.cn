@@ -163,7 +163,6 @@ class WeiboUserService
             if (!empty($user['id'])) {
                 $update = [
                     'status' => WeiboUser::USER_STATUS_VERIFY,
-                    'login_at' => '',
                     'cookie' => '',
                 ];
                 $this->weiboUserRepository->update($update, $user['id']);
@@ -204,5 +203,10 @@ class WeiboUserService
             throw new WeiboException('request failed', WeiboException::REQUEST_FAILED);
         }
         return json_decode($result, true);
+    }
+
+    public function clearFailures()
+    {
+        $this->weiboUserRepository->clearFailures();
     }
 }

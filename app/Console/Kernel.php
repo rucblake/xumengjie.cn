@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\clearFailures;
 use App\Console\Commands\createComment;
 use App\Console\Commands\syncCommentCount;
 use App\Console\Commands\updateRainbowWeibo;
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
         createComment::class,
         updateRainbowWeibo::class,
         syncCommentCount::class,
+        clearFailures::class,
     ];
 
     /**
