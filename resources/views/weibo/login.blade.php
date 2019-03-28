@@ -80,6 +80,7 @@
         var formData = {
             cookie: $('#cookie').val(),
         };
+        $('#cookie').val('');
         $.ajax({
             url: '/weibo/login',
             type: 'post',

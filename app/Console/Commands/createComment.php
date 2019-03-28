@@ -80,7 +80,9 @@ class createComment extends Command
                 ];
                 $this->weiboCommentService->createComment($user, $comment);
                 $result['succeedNum'] ++;
-                sleep(floor(240 / count($users)));
+                if (env('APP_ENV') === 'online') {
+                    sleep(floor(240 / count($users)));
+                }
             } catch (\Exception $e) {
                 Log::warning($e->getMessage());
                 $result['failedNum'] ++;
