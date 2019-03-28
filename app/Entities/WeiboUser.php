@@ -24,8 +24,8 @@ class WeiboUser extends Model implements Transformable
         self::USER_STATUS_VALID => '正常',
         self::USER_STATUS_PASSWORD_ERROR => '密码错误',
         self::USER_STATUS_VERIFY => '需要手动登陆',
-        self::USER_STATUS_FORBIDDEN => '账户封禁',
-        self::USER_STATUS_PROTECTED => '账户登陆保护',
+        self::USER_STATUS_FORBIDDEN => '登录过期',
+        self::USER_STATUS_PROTECTED => '账户保护',
     ];
 
     public function weiboComments()

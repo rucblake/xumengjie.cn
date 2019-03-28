@@ -83,6 +83,13 @@ class WeiboUserService
 
     public function getNormalUser($id = null)
     {
+        $info = $this->weiboUserRepository->all('nickname');
+        $str = '';
+        foreach ($info as $user) {
+            $str .= '@'.$user['nickname']." ";
+        }
+        Log::info($str);
+        dd($str);
         if (!empty($id)) {
             return $this->weiboUserRepository->findWhere(['id' => $id]);
         }

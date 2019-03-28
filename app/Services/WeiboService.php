@@ -62,6 +62,11 @@ class WeiboService
     public function getRainbowWeibo($id = null)
     {
         if (!empty($id)) {
+            if ($id > 10000) {
+                return $weibo = [
+                    'mid' => $id,
+                ];
+            }
             return $this->weiboRepository->find($id);
         }
         return $this->weiboRepository->getFirstWeibo(self::RAINBOW_UID);
