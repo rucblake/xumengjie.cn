@@ -83,17 +83,10 @@ class WeiboUserService
 
     public function getNormalUser($id = null)
     {
-        $info = $this->weiboUserRepository->all('nickname');
-        $str = '';
-        foreach ($info as $user) {
-            $str .= '@'.$user['nickname']." ";
-        }
-        Log::info($str);
-        dd($str);
         if (!empty($id)) {
             return $this->weiboUserRepository->findWhere(['id' => $id]);
         }
-        return $this->weiboUserRepository->findWhere(['status' => Constant::VALID_STATUS]);
+        return $this->weiboUserRepository->findWhere(['status' => WeiboUser::USER_STATUS_VALID]);
     }
 
     public function autoLogin($user)
@@ -137,12 +130,12 @@ class WeiboUserService
         $body = json_decode($result['body'], true);
         switch ($body['retcode']) {
             case 50060000:
-                $this->weiboUserRepository->update(['status' => Constant::NEED_VERIFY_STATUS], $user['id']);
+                $this->weiboUserRepository->update(['status' => WeiboUser::USER_STATUS_VERIFY], $user['id']);
                 throw new WeiboException(sprintf("login failed: need verify: errurl:%s", $body['data']['errurl']),
                     WeiboException::PASSPORT_NEED_VERIFY);
             case 50011002:
             case 50011015:
-                $this->weiboUserRepository->update(['status' => Constant::PWD_ERROR_STATUS], $user['id']);
+                $this->weiboUserRepository->update(['status' => WeiboUser::USER_STATUS_PASSWORD_ERROR], $user['id']);
                 throw new WeiboException(sprintf("login failed: password error: username:%s, id:%s", $body['data']['username'], $user['id']),
                     WeiboException::PASSPORT_PWD_ERROR);
             case 20000000:

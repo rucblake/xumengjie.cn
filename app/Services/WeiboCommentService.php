@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 use App\Entities\Common\Constant;
+use App\Entities\WeiboUser;
 use App\Exceptions\WeiboException;
 use App\Libraries\HttpRequest;
 use App\Libraries\Util\AesUtil;
@@ -40,8 +41,8 @@ class WeiboCommentService
         $url = self::CREATE_COMMENT_API . time();
         $retJson = HttpRequest::call($url, 'post', true, $comment, $header);
         if (empty($retJson)) {
-            if ($user['failed_time'] > 3) {
-                $this->weiboUserRepository->update(['status' => Constant::USER_FORBIDDEN], $user['id']);
+            if ($user['failed_time'] > 10) {
+                $this->weiboUserRepository->update(['status' => WeiboUser::USER_STATUS_FORBIDDEN], $user['id']);
                 throw new WeiboException("comment create failed. user forbidden", WeiboException::PASSPORT_FORBIDDEN);
             }
             $this->weiboUserRepository->update(['failed_time' => $user['failed_time'] + 1], $user['id']);
