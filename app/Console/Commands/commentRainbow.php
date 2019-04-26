@@ -11,21 +11,21 @@ use App\Services\WeiboUserService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class createComment extends Command
+class commentRainbow extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'weibo:create {uid?} {mid?}';
+    protected $signature = 'weibo:commentRainbow {uid?} {mid?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'create a comment';
+    protected $description = 'create a comment for xmj';
 
     protected $weiboService;
     protected $weiboUserService;

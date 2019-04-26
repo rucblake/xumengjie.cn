@@ -74,14 +74,29 @@ class WeiboService
 
     public function updateRainbowWeibo()
     {
-        $mids = $this->weiboRepository->getMidsByUid(self::RAINBOW_UID) ?? [];
+        return $this->updateUserWeibo(self::RAINBOW_UID, self::RAINBOW_CONTAINER_ID);
+    }
+
+    public function getFirstWeibo($uid)
+    {
+        return $this->weiboRepository->getFirstWeibo($uid);
+    }
+
+    public function getWeibos($uid)
+    {
+        return $this->weiboRepository->getWeibos($uid);
+    }
+
+    public function updateUserWeibo($uid, $containerId)
+    {
+        $mids = $this->weiboRepository->getMidsByUid($uid) ?? [];
         $hasNew = false;
         try {
             $params = [
                 'type' => 'uid',
-                'uid' => self::RAINBOW_UID,
-                'value' => self::RAINBOW_UID,
-                'containerid' => self::RAINBOW_CONTAINER_ID,
+                'uid' => $uid,
+                'value' => $uid,
+                'containerid' => $containerId,
             ];
             $result = HttpRequest::call(self::WEIBO_GET_INDEX_API, 'get', true, $params);
             $weiboData = json_decode($result, true);
@@ -97,7 +112,7 @@ class WeiboService
                 }
                 $weibo = [
                     'mid' => $card['mblog']['mid'],
-                    'uid' => self::RAINBOW_UID,
+                    'uid' => $uid,
                     'content' => $card['mblog']['text'],
                     'release_at' => date('Y-m-d', time()),
                     'weibo_url' => $card['scheme'],
@@ -106,10 +121,15 @@ class WeiboService
                 $hasNew = true;
             }
         } catch (\Exception $e) {
-            $errMsg = 'failed get rainbow weibo: ' . $e->getMessage();
+            $errMsg = 'failed get weibo: ' . $e->getMessage();
             Log::warning($errMsg);
             throw new WeiboException($errMsg, WeiboException::WEIBO_GET_ERROR);
         }
         return $hasNew;
+    }
+
+    public function changeWeiboStatus($id, $status)
+    {
+        return $this->weiboRepository->update(['status' => $status], $id);
     }
 }

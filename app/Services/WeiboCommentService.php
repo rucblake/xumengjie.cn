@@ -66,8 +66,8 @@ class WeiboCommentService
         return $retJson;
     }
 
-    public function getCommentCount()
+    public function getCommentCount($mid = 0)
     {
-        return $this->weiboCommentRepository->getCount();
+        return $this->weiboCommentRepository->getCount($mid);
     }
 }

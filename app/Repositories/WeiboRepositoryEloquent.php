@@ -43,4 +43,9 @@ class WeiboRepositoryEloquent extends BaseRepository implements WeiboRepository
     {
         return $this->model->where(['uid' => $uid])->orderBy('mid', 'DESC')->first();
     }
+
+    public function getWeibos($uid)
+    {
+        return $this->model->where(['uid' => $uid])->orderBy('mid', 'DESC')->toArray();
+    }
 }

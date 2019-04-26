@@ -13,4 +13,6 @@ interface WeiboRepository extends RepositoryInterface
     public function getMidsByUid($uid);
 
     public function getFirstWeibo($uid);
+
+    public function getWeibos($uid);
 }

@@ -10,5 +10,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface WeiboCommentRepository extends RepositoryInterface
 {
-    public function getCount();
+    public function getCount($mid);
 }

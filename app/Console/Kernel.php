@@ -3,7 +3,8 @@
 namespace App\Console;
 
 use App\Console\Commands\clearFailures;
-use App\Console\Commands\createComment;
+use App\Console\Commands\comment;
+use App\Console\Commands\commentRainbow;
 use App\Console\Commands\syncCommentCount;
 use App\Console\Commands\updateRainbowWeibo;
 use Illuminate\Console\Scheduling\Schedule;
@@ -17,10 +18,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        createComment::class,
+        commentRainbow::class,
         updateRainbowWeibo::class,
         syncCommentCount::class,
         clearFailures::class,
+        comment::class,
     ];
 
     /**
