@@ -10,18 +10,28 @@ namespace App\Libraries\Util;
  */
 class CommentsUtil
 {
-    public static $count = null;
+    public static $rainbowCount = null;
+    public static $catCount = null;
 
-    public static function randomComment()
+    public static function randomRainbowComment()
     {
-        if (empty(self::$count)) {
-            self::$count = count(self::COMMENTS);
+        if (empty(self::$rainbowCount)) {
+            self::$rainbowCount = count(self::RAINBOW_COMMENTS);
         }
-        $rand = mt_rand(0, self::$count - 1);
-        return self::COMMENTS[$rand];
+        $rand = mt_rand(0, self::$rainbowCount - 1);
+        return self::RAINBOW_COMMENTS[$rand];
     }
 
-    const COMMENTS = [
+    public static function randomCatComment()
+    {
+        if (empty(self::$catCount)) {
+            self::$catCount = count(self::CAT_COMMENT);
+        }
+        $rand = mt_rand(0, self::$catCount - 1);
+        return self::CAT_COMMENT[$rand];
+    }
+
+    const RAINBOW_COMMENTS = [
         "嗯这条博我喜欢~徐梦洁我喜欢你很久了，我这个彩蛋也希望你了解一下。",
         "加油哦彩虹，你真的好可爱，以后的路我们就一起走下去吧，点播一首真的爱你！",
         "每个人对自己的喜欢都不遗余力。虽然每天都很忙但是看到你的微博还是会很开心哈哈，晚安哦小彩虹徐梦洁，愿你天天开心工作顺利哦~",
@@ -219,5 +229,9 @@ class CommentsUtil
         "#多芬品牌大使徐梦洁#我的洗护忠爱品牌和小彩虹了，这次是新产品护发精华么？看来可以闭眼入了",
         "#多芬品牌大使徐梦洁#我猜是小彩虹徐梦洁！徐梦洁造型百变，头发却依然又密又亮，相信一定是用了修护系列的原因！我已经迫不及待等官宣了！",
         "#多芬品牌大使徐梦洁#我喜欢的样子你都有，我没在对徐梦洁表白，我夸得是多芬！（嘿嘿嘿，我和徐梦洁的爱情已经稳了，不需要表白了，来打我呀",
+    ];
+
+    const CAT_COMMENT = [
+        "肉丸拍照真好看",
     ];
 }

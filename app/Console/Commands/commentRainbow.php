@@ -71,7 +71,7 @@ class commentRainbow extends Command
                     'act' => 'post',
                     'uid' => $user['uid'],
                     'mid' => $weibo['mid'],
-                    'content' => CommentsUtil::randomComment() . self::POSTFIX,
+                    'content' => CommentsUtil::randomRainbowComment() . self::POSTFIX,
                     'forward' => 0,
                     'isroot' => 0,
                     'location' => 'page_100505_home',
