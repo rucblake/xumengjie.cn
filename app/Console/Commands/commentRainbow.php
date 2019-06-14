@@ -31,7 +31,7 @@ class commentRainbow extends Command
     protected $weiboUserService;
     protected $weiboCommentService;
 
-    const POSTFIX = '@火箭少女101_徐梦洁#徐梦洁仙女#xmj#徐梦洁奶团子#';
+    const POSTFIX = '@火箭少女101_徐梦洁#徐梦洁rainbow0619生日快乐#xmj#徐梦洁扣杀#';
 
     public function __construct(WeiboService $weiboService,
                                 WeiboUserService $weiboUserService,
