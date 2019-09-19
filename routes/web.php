@@ -39,3 +39,5 @@ Route::get('/weibo/login', function (){
     return view("weibo.login");
 });
 Route::post('/weibo/login', 'WeiboController@login');
+
+// Route::get('mail/send','MailController@send');
