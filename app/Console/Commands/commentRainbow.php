@@ -84,9 +84,9 @@ class commentRainbow extends Command
                     sleep(floor(240 / count($users)));
                 }
             } catch (\Exception $e) {
-                Log::warning($e->getMessage());
+                Log::error($e->getMessage(), ['exception' => $e]);
                 $result['failedNum'] ++;
-                $result['failedReason'][$user['id']] = WeiboException::ERROR_MAP[$e->getCode()];
+                $result['failedReason'][$user['id']] = WeiboException::ERROR_MAP[$e->getCode()] ?? WeiboException::ERROR_MAP[WeiboException::DEFAULT_ERROR];
                 continue;
             }
         }

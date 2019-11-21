@@ -13,6 +13,7 @@ use Exception;
 class WeiboException extends Exception
 {
 
+    const DEFAULT_ERROR = 0;
     // 1XXX 登录错误
     const EMPTY_COOKIE = 1001;
     const PASSPORT_NEED_VERIFY = 1002;
@@ -29,6 +30,7 @@ class WeiboException extends Exception
     const REQUEST_FAILED = 9001;
 
     const ERROR_MAP = [
+        self::DEFAULT_ERROR => '其他错误',
         self::EMPTY_COOKIE => 'cookie不存在',
         self::PASSPORT_NEED_VERIFY => '机器验证',
         self::PASSPORT_PWD_ERROR => '密码错误',

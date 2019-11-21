@@ -159,7 +159,7 @@ class WeiboUserService
         ];
         $result = HttpRequest::call(self::WEIBO_CONFIG_URL, 'post', true, [], $header);
         $result =  json_decode($result, true);
-        if (!$result['data']['login']) {
+        if (empty($result['data']['login']) || !$result['data']['login']) {
             if (!empty($user['id'])) {
                 $update = [
                     'status' => WeiboUser::USER_STATUS_VERIFY,
