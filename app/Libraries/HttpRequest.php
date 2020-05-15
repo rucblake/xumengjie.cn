@@ -56,10 +56,11 @@ class HttpRequest
         curl_setopt($ch, CURLOPT_HEADER,1);
         $result = curl_exec($ch);
         $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-
         $ret = [
             'header' => substr($result, 0, $headerSize),
             'body' => substr($result, $headerSize),
+            'errno' => curl_errno($ch),
+            'error' => curl_error($ch),
         ];
         return $ret;
     }

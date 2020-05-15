@@ -5,7 +5,7 @@ namespace App\Console;
 use App\Console\Commands\clearFailures;
 use App\Console\Commands\comment;
 use App\Console\Commands\commentCat;
-use App\Console\Commands\commentRainbow;
+use App\Console\Commands\V2\commentRainbow;
 use App\Console\Commands\syncCommentCount;
 use App\Console\Commands\updateUserWeibo;
 use Illuminate\Console\Scheduling\Schedule;

@@ -12,6 +12,7 @@ namespace App\Services;
 use App\Entities\WeiboUser;
 use App\Exceptions\WeiboException;
 use App\Libraries\HttpRequest;
+use App\Libraries\Util\AesUtil;
 use App\Repositories\WeiboCommentRepository;
 use App\Repositories\WeiboRepository;
 use App\Repositories\WeiboUserRepository;
