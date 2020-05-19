@@ -59,7 +59,7 @@ class commentRainbow extends Command
                 $this->weiboCommentService->createCommentV2($commentUrl, $user);
                 $result['succeedNum'] ++;
                 if (env('APP_ENV') === 'online') {
-                    sleep(floor(60 / count($users)));
+                    sleep(floor(180 / count($users)));
                 }
             } catch (\Exception $e) {
                 \Log::error($e->getMessage(), ['exception' => $e]);
