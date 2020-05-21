@@ -138,12 +138,21 @@ class WeiboCommentService
             }
             $url = self::WEIBO_REFERER . $action;
             $result = HttpRequest::callAll($url, 'post', true, $params, $header);
-            $record = [
-                'weibo_user_id' => $user['id'],
-                'mid' => $url,
-                'content' => $params['content'],
-            ];
-            $this->weiboCommentRepository->create($record);
+            if (!empty($result['body'])) {
+                $context = [
+                    'params' => $params,
+                    'user' => $user,
+                    'result' => $result,
+                ];
+                \Log::warning("评论返回信息", $context);
+            } else {
+                $record = [
+                    'weibo_user_id' => $user['id'],
+                    'mid' => $url,
+                    'content' => $params['content'],
+                ];
+                $this->weiboCommentRepository->create($record);
+            }
         } catch (\Exception $e) {
             $errMsg = 'failed comment: ' . $e->getMessage();
             \Log::warning($errMsg);
