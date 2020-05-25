@@ -96,6 +96,9 @@ class WeiboCommentService
             $dom = HtmlDomParser::str_get_html($weibo);
             $elements = $dom->findMulti('.c .cc');
             foreach ($elements as $element) {
+                if (strstr($element->text(), '原文')) {
+                    continue;
+                }
                 $commentNum = explode(']', explode('[', $element->text())[1])[0];
                 if ($commentNum > 50000) {
                     // 如果置顶微博低于5w评论则评论置顶微博，否则评论下一条
