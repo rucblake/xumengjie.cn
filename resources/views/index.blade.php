@@ -151,7 +151,7 @@
 <div class="img-banner">
     <img src="{{ $banner4 }}">
 </div>
-<p class="contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
+<p class="contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@潇湘ke</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
 </body>
 <script src="/lib/vue.min.js"></script>
 <script src="/js/share.js"></script>
@@ -180,7 +180,11 @@
         },
         methods: {
             getAttachUrl: function (item, mode) {
-                return item.url + '/' + mode + '/' + item.hash_key + '.' + item.type;
+                var imageType = 'jpg';
+                if (mode == 'origin') {
+                    imageType = item.type;
+                }
+                return item.url + '/' + mode + '/' + item.hash_key + '.' + imageType;
             },
             showMidImage: function (item) {
                 this.currentImage.data = item;

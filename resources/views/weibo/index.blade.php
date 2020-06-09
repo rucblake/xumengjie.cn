@@ -58,7 +58,7 @@
         <li>收藏本页链接方便查看：<a href="/weibo">xumengjie.cn/weibo</a></li>
     </ul>
 </div>
-<p class="text-center"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
+<p class="text-center"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@潇湘ke</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
 <script src="/lib/bootstrap.min.js"></script>
 <script src="/js/share.js"></script>
 <script src="/lib/vue.min.js"></script>

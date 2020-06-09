@@ -159,7 +159,7 @@
     </div>
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <p class="y-center contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@杨文清Blake</a> | powered by Blakeke</p>
+            <p class="y-center contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@潇湘ke</a> | powered by Blakeke</p>
         </div>
     </div>
 </div>

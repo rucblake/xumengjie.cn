@@ -86,7 +86,11 @@
                 this.getList();
             },
             getAttachUrl: function (item, mode) {
-                return item.url + '/' + mode + '/' + item.hash_key + '.' + item.type;
+                var imageType = 'jpg';
+                if (mode == 'origin') {
+                    imageType = item.type;
+                }
+                return item.url + '/' + mode + '/' + item.hash_key + '.' + imageType;
             },
             showMidImage: function (item) {
                 this.currentImage.data = item;
