@@ -4,11 +4,11 @@
 <div id="app">
     <div class="title">
         <span class="rainbow-icon">
-            <img src="http://s1.xumengjie.cn:8031/img/rainbow-ico.png">
+            <img src="http://img.xumengjie.cn/common/rainbow-ico.png">
         </span>
         <span>彩虹新鲜事</span>
         <span class="rainbow-icon">
-            <img src="http://s1.xumengjie.cn:8031/img/rainbow-ico.png">
+            <img src="http://img.xumengjie.cn/common/rainbow-ico.png">
         </span>
     </div>
     <div class="list">
