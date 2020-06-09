@@ -27,13 +27,13 @@ p,div,a {
 }
 
 .header-link {
-    color: #000;
+    color: #fff;
     margin: auto;
     display: inline-block;
 }
 
 .header-link-border {
-    border-right: solid 1px #000;
+    border-right: solid 1px #fff;
     width: 1px;
     box-sizing: border-box;
     margin: 5px 0;
@@ -49,7 +49,8 @@ p,div,a {
     width: 100%;
     height: 100%;
     text-align: center;
-    /*background: linear-gradient(to bottom,#F5A3A6 30%,#E68285 80%, #933041);*/
+    /*background: linear-gradient(to bottom,#e6d4c6 10%,#e5d2c3 80%, #e9d6c7);*/
+    background-color: #ebd9cb;
 }
 
 .hello-rainbow img {
@@ -87,10 +88,10 @@ p,div,a {
     z-index: 8;
 }
 
-.img-chu {
+.img-title {
     opacity: 0;
-    z-index: 2;
-    animation: show-font .2s ease-in 2s forwards normal;
+    z-index: 4;
+    animation: show-font .5s ease-in 2s forwards normal;
 }
 
 .img-dao {
@@ -119,7 +120,7 @@ p,div,a {
 
 .img-border {
     opacity: 0;
-    z-index: 1;
+    z-index: 5;
     animation: show-border .5s ease-in forwards normal;
 }
 
@@ -144,7 +145,7 @@ p,div,a {
     line-height: .5rem;
     font-size: .3rem;
     opacity: 0;
-    animation: show-welcome 1s linear 3s forwards normal;
+    animation: show-welcome 1s linear 2.5s forwards normal;
 }
 
 @keyframes show-font{

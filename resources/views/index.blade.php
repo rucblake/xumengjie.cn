@@ -27,18 +27,16 @@
 </div>
 <section id="hello">
     <div class="hello-rainbow">
-        <img class="img-chu" src="{{ $word1_0619 }}">
-        <img class="img-dao" src="{{ $word2_0619 }}">
-        <img class="img-kuai" src="{{ $word3_0619 }}">
-        <img class="img-le" src="{{ $word4_0619 }}">
-        <img class="img-border" src="{{ $border_0619 }}">
-        <a href="#intro" class="welcome target"><img class="img-welcome" src="{{ $welcome_0619 }}"></a>
-        {{--<a href="#intro" class="welcome target"><div class="welcome-bg"></div>“追梦不停步，笑眼里就有彩虹”<br>我是Rainbow - 徐梦洁。</a>--}}
-        <img class="img-zhongshou" src="{{ $cn_0619 }}">
-        <img class="img-619bg" src="{{ $bg_0619 }}">
+        <img class="img-title" src="{{ $title }}">
+        <img class="img-border" src="{{ $border }}">
+        <img class="welcome" src="{{ $welcome }}">
+{{--        <a href="#intro" class="welcome target"><img class="img-welcome" src="{{ $welcome }}"></a>--}}
+{{--        <a href="#intro" class="welcome target"><div class="welcome-bg"></div>“追梦不停步，笑眼里就有彩虹”<br>我是Rainbow - 徐梦洁。</a>--}}
+{{--        <img class="img-zhongshou" src="{{ $cn_0619 }}">--}}
+{{--        <img class="img-619bg" src="{{ $bg_0619 }}">--}}
     </div>
     <div class="rainbow-bg">
-        <img src="{{ $rainbow_0619 }}">
+        <img src="{{ $rainbow }}">
     </div>
     <div class="front"></div>
 </section>
