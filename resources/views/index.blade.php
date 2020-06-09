@@ -115,7 +115,6 @@
                 <img src="{{ $ico }}">
             </span>
         </div>
-
         <div class="list">
             <div class="item" v-for="item in home.video.p101">
                 <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
@@ -137,6 +136,7 @@
             </span>
             <a class="more-link" href="/video/list">More>></a>
         </div>
+        <div class="b-video"><iframe src="//player.bilibili.com/player.html?aid=35228167&bvid=BV1vb411w7f4&cid=61724990&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></div>
 
         <div class="list">
             <div class="item" v-for="item in home.video.normal">

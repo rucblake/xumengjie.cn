@@ -53,6 +53,12 @@ p,div,a {
     background-color: #e5d2c3;
 }
 
+.b-video {
+    width: 100%;
+    text-align: center;
+    margin: 10px auto;
+}
+
 .hello-rainbow img {
     left: 0;
     top: 0;
