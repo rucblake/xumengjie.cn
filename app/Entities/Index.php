@@ -16,6 +16,8 @@ class Index extends Model implements Transformable
     const NORMAL_COUNT = 5;
     const IMAGE_COUNT = 9;
     const NEWS_COUNT = 5;
+    const VIDEO_TYPE = 2;
+    const VIDEO_COUNT = 4;
 
     protected $fillable = [];
 

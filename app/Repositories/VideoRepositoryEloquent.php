@@ -37,12 +37,18 @@ class VideoRepositoryEloquent extends BaseRepository implements VideoRepository
     public function getVideoList($currentPage, $pageSize, $type)
     {
         $pageSize = $pageSize < Constant::MAX_PAGE_SIZE ? $pageSize : Constant::MAX_PAGE_SIZE;
-        return $this->model->where('type', $type)->orderBy('id', 'DESC')
+        return $this->model->where([
+            'type' => $type,
+            'status' => Constant::VALID_STATUS,
+        ])->orderBy('id', 'DESC')
             ->paginate($pageSize, Video::LIST_KEY, Video::PAGE_NAME, $currentPage);
     }
 
     public function getHomeData($type, $count)
     {
-        return $this->model->where('type', $type)->orderBy('id', 'DESC')->limit($count)->get();
+        return $this->model->where([
+            'type' => $type,
+            'status' => Constant::VALID_STATUS,
+        ])->orderBy('id', 'DESC')->limit($count)->get();
     }
 }

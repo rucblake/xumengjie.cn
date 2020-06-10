@@ -14,8 +14,10 @@
     <div class="list">
         <p class="loading" v-if="loading">加载中，请稍候~</p>
         <div class="item" v-for="item in video.list">
-            <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
-            <p class="item-desc">@{{ item.desc }}</p>
+            <a class="item-title" :href="item.url" target="_blank">@{{ item.title }}</a>
+            <div class="b-video">
+                <iframe :src="item.desc" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+            </div>
         </div>
     </div>
     <div class="page-control">
@@ -47,7 +49,7 @@
                 var postData = {
                     currentPage: this.video.currentPage,
                     pageSize: this.pageSize,
-                    type: 1,
+                    type: 2,
                 };
                 $.ajax({
                     url: '/video/list',

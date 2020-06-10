@@ -36,8 +36,7 @@ class IndexService {
     public function getHomeData()
     {
         $ret = [];
-        $ret['video']['p101'] = $this->videoRepository->getHomeData(Index::P101_TYPE, Index::P101_COUNT);
-        $ret['video']['normal'] = $this->videoRepository->getHomeData(Index::NORMAL_TYPE, Index::NORMAL_COUNT);
+        $ret['video'] = $this->videoRepository->getHomeData(Index::VIDEO_TYPE, Index::VIDEO_COUNT);
         $ret['news'] = $this->newsRepository->getHomeData(Index::NEWS_COUNT);
         $ret['image'] = $this->imageRepository->getHomeData(Index::IMAGE_COUNT);
         return $ret;

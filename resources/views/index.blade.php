@@ -20,10 +20,11 @@
 </head>
 <body>
 <div class="header">
-    <a class="target header-link" href="#intro">介绍</a><span class="header-link-border"></span>
-    <a class="target header-link" href="#news">帖子</a><span class="header-link-border"></span>
-    <a class="target header-link" href="#video-101">创造101</a><span class="header-link-border"></span>
-    <a class="target header-link" href="#video-other">视频</a>
+    <a class="target header-link" href="#intro">简介</a>
+    <span class="header-link-border"></span>
+    <a class="target header-link" href="#video">视频</a>
+    <span class="header-link-border"></span>
+    <a class="target header-link" href="#news">盘点</a>
 </div>
 <section id="hello">
     <div class="hello-rainbow">
@@ -53,35 +54,56 @@
     <p class="p-content">徐梦洁，1994年6月19日出生于浙江省金华市，中国内地流行乐女歌手、模特、演员，中国内地女子演唱组合蜜蜂少女队、火箭少女101成员。</p>
     <p class="p-content">2015年，徐梦洁加入了蜜蜂少女队，2018年4月21日，以练习生的身份参加由腾讯视频出品的女团竞演节目《创造101》，最终以第11名的成绩加入火箭少女101，成功出道。</p>
     <p class="p-content">因为英文名为"Rainbow"，笑起来眼睛像彩虹一样弯弯的，所以被大家叫做“小彩虹”。经过后援会三轮粉丝投票，2018年7月1日，最终决定粉丝名为“彩蛋”。</p>
-    <a class="a-baike" href="https://baike.baidu.com/item/%E5%BE%90%E6%A2%A6%E6%B4%81" target="_blank">- 百度百科 : 徐梦洁</a>
+    <a class="a-baike" href="https://weibo.com/u/5873220619" target="_blank">徐梦洁 - 微博 - 个人主页</a>
+    <a class="a-baike" href="https://baike.baidu.com/item/%E5%BE%90%E6%A2%A6%E6%B4%81/8208274" target="_blank">百度百科 : 徐梦洁</a>
 </section>
 <div class="img-banner">
     <img src="{{ $banner1 }}">
 </div>
 <div id="app">
-    <section id="image">
+{{--    <section id="image">--}}
+{{--        <div class="title">--}}
+{{--            <span class="rainbow-icon">--}}
+{{--                <img src="{{ $ico }}">--}}
+{{--            </span>--}}
+{{--            <span>润宝图集</span>--}}
+{{--            <span class="rainbow-icon">--}}
+{{--                <img src="{{ $ico }}">--}}
+{{--            </span>--}}
+{{--            <a class="more-link" href="/image/list">More>></a>--}}
+{{--        </div>--}}
+{{--        <p class="empty-line"></p>--}}
+{{--        <div class="image-list">--}}
+{{--            <div class="image-div" v-for="item in home.image">--}}
+{{--                <img class="image" :src="getAttachUrl(item, 'small')" @click="showMidImage(item)">--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="mid-image" v-if="currentImage.show" style="display: none">--}}
+{{--            <div class="mid-image-bg"></div>--}}
+{{--            <div class="mid-image-div" @click="hiddenMidImage()">--}}
+{{--                <img :src="getAttachUrl(currentImage.data, 'mid')">--}}
+{{--            </div>--}}
+{{--            <div class="go-to-origin" @click="goToOrigin()">查看原图</div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+    <section id="video">
         <div class="title">
             <span class="rainbow-icon">
                 <img src="{{ $ico }}">
             </span>
-            <span>润宝图集</span>
+            <span>视频</span>
             <span class="rainbow-icon">
                 <img src="{{ $ico }}">
             </span>
-            <a class="more-link" href="/image/list">More>></a>
+            <a class="more-link" href="/video/list">More>></a>
         </div>
-        <p class="empty-line"></p>
-        <div class="image-list">
-            <div class="image-div" v-for="item in home.image">
-                <img class="image" :src="getAttachUrl(item, 'small')" @click="showMidImage(item)">
+        <div class="list">
+            <div class="item" v-for="item in home.video">
+                <a class="item-title" :href="item.url" target="_blank">@{{ item.title }}</a>
+                <div class="b-video">
+                    <iframe :src="item.desc" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
             </div>
-        </div>
-        <div class="mid-image" v-if="currentImage.show" style="display: none">
-            <div class="mid-image-bg"></div>
-            <div class="mid-image-div" @click="hiddenMidImage()">
-                <img :src="getAttachUrl(currentImage.data, 'mid')">
-            </div>
-            <div class="go-to-origin" @click="goToOrigin()">查看原图</div>
         </div>
     </section>
     <section id="news">
@@ -102,52 +124,9 @@
             </div>
         </div>
         <div class="img-banner">
-            <img src="{{ $banner2 }}">
+            <img src="{{ $banner4 }}">
         </div>
     </section>
-    <section id="video-101">
-        <div class="title">
-            <span class="rainbow-icon">
-                <img src="{{ $ico }}">
-            </span>
-            <span>创造101直拍</span>
-            <span class="rainbow-icon">
-                <img src="{{ $ico }}">
-            </span>
-        </div>
-        <div class="list">
-            <div class="item" v-for="item in home.video.p101">
-                <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
-                <p class="item-desc">@{{ item.desc }}</p>
-            </div>
-        </div>
-        <div class="img-banner">
-            <img src="{{ $banner3 }}">
-        </div>
-    </section>
-    <section id="video-other">
-        <div class="title">
-            <span class="rainbow-icon">
-                <img src="{{ $ico }}">
-            </span>
-            <span>其他视频</span>
-            <span class="rainbow-icon">
-                <img src="{{ $ico }}">
-            </span>
-            <a class="more-link" href="/video/list">More>></a>
-        </div>
-        <div class="b-video"><iframe src="//player.bilibili.com/player.html?aid=35228167&bvid=BV1vb411w7f4&cid=61724990&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></div>
-
-        <div class="list">
-            <div class="item" v-for="item in home.video.normal">
-                <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
-                <p class="item-desc">@{{ item.desc }}</p>
-            </div>
-        </div>
-    </section>
-</div>
-<div class="img-banner">
-    <img src="{{ $banner4 }}">
 </div>
 <p class="contact-info"><a href="https://github.com/rucblake/xumengjie.cn" target="_blank">github</a> | 微博：<a href="http://weibo.com/u/1039990062" target="_blank">@潇湘ke</a> | <a href="http://xumengjie.cn">xumengjie.cn</a></p>
 </body>
@@ -162,10 +141,7 @@
                 data: {},
             },
             home: {
-                video: {
-                    p101: [],
-                    normal: [],
-                },
+                video: [],
                 news: [],
                 image: [],
             }
