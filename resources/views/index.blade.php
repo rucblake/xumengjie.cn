@@ -54,8 +54,10 @@
     <p class="p-content">徐梦洁，1994年6月19日出生于浙江省金华市，中国内地流行乐女歌手、模特、演员，中国内地女子演唱组合蜜蜂少女队、火箭少女101成员。</p>
     <p class="p-content">2015年，徐梦洁加入了蜜蜂少女队，2018年4月21日，以练习生的身份参加由腾讯视频出品的女团竞演节目《创造101》，最终以第11名的成绩加入火箭少女101，成功出道。</p>
     <p class="p-content">因为英文名为"Rainbow"，笑起来眼睛像彩虹一样弯弯的，所以被大家叫做“小彩虹”。经过后援会三轮粉丝投票，2018年7月1日，最终决定粉丝名为“彩蛋”。</p>
-    <a class="a-baike" href="https://weibo.com/u/5873220619" target="_blank">徐梦洁 - 微博 - 个人主页</a>
-    <a class="a-baike" href="https://baike.baidu.com/item/%E5%BE%90%E6%A2%A6%E6%B4%81/8208274" target="_blank">百度百科 : 徐梦洁</a>
+    <a class="a-baike" href="https://weibo.com/u/5873220619" target="_blank">♡ 徐梦洁 - 微博</a>
+    <a class="a-baike" href="https://v.douyin.com/JdF1bMR/" target="_blank">♡ 徐梦洁 - 抖音</a>
+    <a class="a-baike" href="https://www.xiaohongshu.com/user/profile/5ad47bb680008671255c6948" target="_blank">♡ 徐梦洁 - 小红书</a>
+    <a class="a-baike" href="https://baike.baidu.com/item/%E5%BE%90%E6%A2%A6%E6%B4%81/8208274" target="_blank">♡ 徐梦洁 - 百度百科</a>
 </section>
 <div class="img-banner">
     <img src="{{ $banner1 }}">
