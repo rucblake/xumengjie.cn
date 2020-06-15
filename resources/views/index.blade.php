@@ -120,9 +120,20 @@
             <a class="more-link" href="/news/list">More>></a>
         </div>
         <div class="list">
-            <div class="item" v-for="item in home.news">
-                <a class="item-title" :href="item.url" target="_blank">@{{ item.title }} - @{{ item.from }}</a>
-                <p class="item-desc">@{{ item.desc }}</p>
+            <div class="item">
+                <div class="img-banner">
+                    <img src="{{ $pandian_2019 }}">
+                </div>
+            </div>
+            <div class="item">
+                <a class="item-title" href="{{ $pandian_2018_origin }}" target="_blank">小彩虹出道元年高光时刻混剪</a>
+                <div class="b-video">
+                    <iframe src="{{ $pandian_2018 }}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                </div>
+            </div>
+            <div class="item">
+                <a class="item-title" href="{{ $letter }}" target="_blank">徐梦洁写给女团创始人的信</a>
+                <p class="item-desc">"彩虹"下有大树，大树下有彩虹。彩虹的心里住着一个"彩虹"梦，你们一定也跟我一样。</p>
             </div>
         </div>
         <div class="img-banner">
