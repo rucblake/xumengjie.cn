@@ -27,7 +27,7 @@ class WeiboCommentService
     const RAINBOW_WEIBO_URL = 'https://weibo.cn/u/5873220619';
 
     const CACHE_NAME_COMMENT_URL = 'rainbow_comment_url';
-    const POSTFIX = '#徐梦洁rainbow0619生日快乐# xmj#徐梦洁 炙热的我们# @火箭少女101_徐梦洁';
+    const POSTFIX = '#徐梦洁空姐舞#xmj#徐梦洁 北京时装周青春时尚大使# @火箭少女101_徐梦洁';
 
     const COMMENT_FORM_FIELD = ['srcuid', 'id', 'rl'];
 
