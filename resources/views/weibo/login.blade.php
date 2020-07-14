@@ -44,19 +44,15 @@
     <li><a href="https://weibo.cn" target="_blank">点击这里</a>前往微博网页版（这个网页一定要用电脑打开）</li>
     <li>按下F12进入浏览器的开发者模式，进入类似下图的样子</li>
     <div class="help-img">
-        <img src="http://s1.xumengjie.cn:8031/pc/weibo/1.png"/>
+        <img src="http://img.xumengjie.cn/common/step1.png"/>
     </div>
     <li>在右侧出现的工具栏中，选择最上方的<strong>NetWork</strong>，然后按F5刷新，如下图</li>
     <div class="help-img">
-        <img src="http://s1.xumengjie.cn:8031/pc/weibo/2.png"/>
+        <img src="http://img.xumengjie.cn/common/step2.png"/>
     </div>
-    <li>点击<strong>weibo.cn</strong>，出现请求的详细信息，如下图</li>
+    <li>点击<strong>weibo.cn</strong>，出现请求的详细信息。向下滚动，在请求中找到<strong>Request Header</strong>，复制<strong>Cookie</strong>的所有内容，如下图</li>
     <div class="help-img">
-        <img src="http://s1.xumengjie.cn:8031/pc/weibo/3.png"/>
-    </div>
-    <li>向下滚动，在请求中找到<strong>Request Header</strong>，复制<strong>Cookie</strong>的所有内容，如下图</li>
-    <div class="help-img">
-        <img src="http://s1.xumengjie.cn:8031/pc/weibo/4.png"/>
+        <img src="http://img.xumengjie.cn/common/step3.png"/>
     </div>
     <li>至此，手动获取登录信息完成</li>
     <h3>第三步</h3>
@@ -64,10 +60,7 @@
     <li>cookie将加密存储到数据库中，除评论彩虹微博外不做他用。</li>
     <hr>
     <h3>火狐浏览器的区别</h3>
-    <li>火狐浏览器会将请求头缩略显示，cookie显示不全，需要点击原始头才能完全显示，如下图所示：</li>
-    <div class="help-img">
-        <img src="http://s1.xumengjie.cn:8031/pc/weibo/5.png" style="max-width: 1600px"/>
-    </div>
+    <li>火狐浏览器会将请求头缩略显示，cookie显示不全，需要点击原始头才能完全显示</li>
     <li><a class="toTop" href="#top">点击此处</a>可以直接回到顶部</li>
 </div>
 <br>
