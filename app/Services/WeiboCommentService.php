@@ -31,15 +31,17 @@ class WeiboCommentService
 
     const COMMENT_FORM_FIELD = ['srcuid', 'id', 'rl'];
 
-
-    protected $weiboCommentRepository;
+    protected $weiboUserService;
     protected $weiboUserRepository;
+    protected $weiboCommentRepository;
 
-    public function __construct(WeiboCommentRepository $weiboCommentRepository,
-                                WeiboUserRepository $weiboUserRepository)
+    public function __construct(WeiboUserService $weiboUserService,
+                                WeiboUserRepository $weiboUserRepository,
+                                WeiboCommentRepository $weiboCommentRepository)
     {
-        $this->weiboCommentRepository = $weiboCommentRepository;
+        $this->weiboUserService = $weiboUserService;
         $this->weiboUserRepository = $weiboUserRepository;
+        $this->weiboCommentRepository = $weiboCommentRepository;
     }
 
     public function createComment($user, $comment)
@@ -92,7 +94,14 @@ class WeiboCommentService
                 'Referer: ' . self::WEIBO_REFERER,
                 'Cookie: ' . AesUtil::decrypt($user['cookie']),
             ];
-            $weibo = HttpRequest::call(self::RAINBOW_WEIBO_URL, 'get', true, [], $header);
+            $response = HttpRequest::callAll(self::RAINBOW_WEIBO_URL, 'get', true, [], $header);
+            $resHeader = $response['header'];
+            if (strstr($resHeader, 'https://login.sina.com.cn/sso/login.php')) {
+                // 登录状态过期，需要重新登录
+                $this->weiboUserService->checkConfig($user);
+                throw new WeiboException("get comment url failed: login status invalid", WeiboException::CONFIG_CHECK_FAILED);
+            }
+            $weibo = $response['body'];
             $dom = HtmlDomParser::str_get_html($weibo);
             $elements = $dom->findMulti('.c .cc');
             foreach ($elements as $element) {
@@ -126,7 +135,14 @@ class WeiboCommentService
                 'Cookie: ' . AesUtil::decrypt($user['cookie']),
                 'Content-Type: application/x-www-form-urlencoded',
             ];
-            $weibo = HttpRequest::call($url, 'get', true, [], $header);
+            $response = HttpRequest::callAll($url, 'get', true, [], $header);
+            $resHeader = $response['header'];
+            if (strstr($resHeader, 'https://login.sina.com.cn/sso/login.php')) {
+                // 登录状态过期，需要重新登录
+                $this->weiboUserService->checkConfig($user);
+                throw new WeiboException("comment failed: login status invalid", WeiboException::CONFIG_CHECK_FAILED);
+            }
+            $weibo = $response['body'];
             $dom = HtmlDomParser::str_get_html($weibo);
             $form = $dom->find('#cmtfrm form')[0];
             $action = $form->getAttribute('action');
@@ -157,9 +173,13 @@ class WeiboCommentService
                 $this->weiboCommentRepository->create($record);
             }
         } catch (\Exception $e) {
-            $errMsg = 'failed comment: ' . $e->getMessage();
-            \Log::warning($errMsg);
-            throw new WeiboException($errMsg, WeiboException::COMMENT_CREATE_FAILED);
+            if (isset(WeiboException::ERROR_MAP[$e->getCode()])) {
+                throw $e;
+            } else {
+                $errMsg = 'failed comment: ' . $e->getMessage();
+                \Log::warning($errMsg);
+                throw new WeiboException($errMsg, WeiboException::COMMENT_CREATE_FAILED);
+            }
         }
     }
 }

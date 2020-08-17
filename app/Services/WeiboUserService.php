@@ -70,8 +70,12 @@ class WeiboUserService
                 $user['nickname'] = $info['data']['user']['screen_name'];
                 $store = $this->weiboUserRepository->create($user);
             } else {
+                $info = $this->getUserInfo($uid);
                 if ($store['status'] == WeiboUser::USER_STATUS_VALID) {
                     return $store;
+                }
+                if ($store['nickname'] != $info['data']['user']['screen_name']) {
+                    $user['nickname'] = $info['data']['user']['screen_name'];
                 }
                 $this->weiboUserRepository->update($user, $store['id']);
             }
