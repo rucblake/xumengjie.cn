@@ -44,12 +44,12 @@
     <li><a href="https://weibo.cn" target="_blank">点击这里</a>前往微博网页版（这个网页一定要用电脑打开）</li>
     <li>按下F12进入浏览器的开发者模式，进入类似下图的样子</li>
     <div class="help-img">
-        <img src="/login/step1.png"/>
+        <img src="/img/login/step1.png"/>
     </div>
     <li>在右侧出现的工具栏中，选择最上方的<strong>NetWork</strong>，然后按F5刷新</li>
     <li>点击<strong>weibo.cn</strong>，出现请求的详细信息。向下滚动，在请求中找到<strong>Request Header</strong>，复制<strong>Cookie</strong>冒号后面的所有内容，如下图</li>
     <div class="help-img">
-        <img src="/login/step2.png"/>
+        <img src="/img/login/step2.png"/>
     </div>
     <li>至此，手动获取登录信息完成</li>
     <h3>第三步</h3>
