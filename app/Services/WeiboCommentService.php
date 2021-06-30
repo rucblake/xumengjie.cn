@@ -27,7 +27,7 @@ class WeiboCommentService
     const RAINBOW_WEIBO_URL = 'https://weibo.cn/u/5873220619';
 
     const CACHE_NAME_COMMENT_URL = 'rainbow_comment_url';
-    const POSTFIX = '#徐梦洁关节美力大使#xmj#徐梦洁超新星运动会# @徐梦洁';
+    const POSTFIX = '#徐梦洁全新EP#xmj#徐梦洁新歌mv好辣# @徐梦洁';
 
     const COMMENT_FORM_FIELD = ['srcuid', 'id', 'rl'];
 
