@@ -39,7 +39,7 @@
     </ul>
     <h3>下面以chrome为例介绍过程，火狐的区别在最后。</h3>
     <h3>第一步</h3>
-    <li><a href="https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=https%3A%2F%2Fm.weibo.cn%2F" target="_blank">点击这里</a>前往微博登录，登录完就可以回来了</li>
+    <li><a href="https://passport.weibo.cn/signin/login" target="_blank">点击这里</a>前往微博登录，登录完就可以回来了</li>
     <h3>第二步</h3>
     <li><a href="https://weibo.cn" target="_blank">点击这里</a>前往微博网页版（这个网页一定要用电脑打开）</li>
     <li>按下F12进入浏览器的开发者模式，进入类似下图的样子</li>
