@@ -41,7 +41,11 @@
     <h3>第一步</h3>
     <li><a href="https://weibo.cn" target="_blank">点击这里</a>前往微博网页版（这个网页一定要用电脑打开），左上角选择登录</li>
     <h3>第二步</h3>
-    <li>按下F12进入浏览器的开发者模式，进入类似下图的样子</li>
+    <li>按下F12进入浏览器的开发者模式，或在右上角点击三个点->更多工具->开发者工具,如下图</li>
+    <div class="help-img">
+        <img src="/img/login/opendev.png"/>
+    </div>
+    <li>之后进入类似下图的样子</li>
     <div class="help-img">
         <img src="/img/login/step1.png"/>
     </div>
