@@ -27,7 +27,7 @@ class WeiboCommentService
     const RAINBOW_WEIBO_URL = 'https://weibo.cn/u/5873220619';
 
     const CACHE_NAME_COMMENT_URL = 'rainbow_comment_url';
-    const POSTFIX = '#徐梦洁全新EP#xmj#徐梦洁新歌mv好辣# @徐梦洁';
+    const POSTFIX = '#eland品牌代言人徐梦洁#xmj#徐梦洁哎呀好身材# @徐梦洁';
 
     const COMMENT_FORM_FIELD = ['srcuid', 'id', 'rl'];
 
