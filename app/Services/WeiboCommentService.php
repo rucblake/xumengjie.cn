@@ -109,7 +109,7 @@ class WeiboCommentService
                     continue;
                 }
                 $commentNum = explode(']', explode('[', $element->text())[1])[0];
-                if ($commentNum > 10000) {
+                if ($commentNum > 30000) {
                     // 如果置顶微博低于5w评论则评论置顶微博，否则评论下一条
                     continue;
                 }
